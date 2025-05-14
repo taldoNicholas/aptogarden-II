@@ -1,98 +1,106 @@
-<p align="center">
-  <a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo-small.svg" width="120" alt="Nest Logo" /></a>
-</p>
+# 🌿 APTOGarden - Plataforma de Gestão para Fazenda Urbana
 
-[circleci-image]: https://img.shields.io/circleci/build/github/nestjs/nest/master?token=abc123def456
-[circleci-url]: https://circleci.com/gh/nestjs/nest
+**📚 Disciplina:** Desenvolvimento Web II
 
-  <p align="center">A progressive <a href="http://nodejs.org" target="_blank">Node.js</a> framework for building efficient and scalable server-side applications.</p>
-    <p align="center">
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/v/@nestjs/core.svg" alt="NPM Version" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/l/@nestjs/core.svg" alt="Package License" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/dm/@nestjs/common.svg" alt="NPM Downloads" /></a>
-<a href="https://circleci.com/gh/nestjs/nest" target="_blank"><img src="https://img.shields.io/circleci/build/github/nestjs/nest/master" alt="CircleCI" /></a>
-<a href="https://discord.gg/G7Qnnhy" target="_blank"><img src="https://img.shields.io/badge/discord-online-brightgreen.svg" alt="Discord"/></a>
-<a href="https://opencollective.com/nest#backer" target="_blank"><img src="https://opencollective.com/nest/backers/badge.svg" alt="Backers on Open Collective" /></a>
-<a href="https://opencollective.com/nest#sponsor" target="_blank"><img src="https://opencollective.com/nest/sponsors/badge.svg" alt="Sponsors on Open Collective" /></a>
-  <a href="https://paypal.me/kamilmysliwiec" target="_blank"><img src="https://img.shields.io/badge/Donate-PayPal-ff3f59.svg" alt="Donate us"/></a>
-    <a href="https://opencollective.com/nest#sponsor"  target="_blank"><img src="https://img.shields.io/badge/Support%20us-Open%20Collective-41B883.svg" alt="Support us"></a>
-  <a href="https://twitter.com/nestframework" target="_blank"><img src="https://img.shields.io/twitter/follow/nestframework.svg?style=social&label=Follow" alt="Follow us on Twitter"></a>
-</p>
-  <!--[![Backers on Open Collective](https://opencollective.com/nest/backers/badge.svg)](https://opencollective.com/nest#backer)
-  [![Sponsors on Open Collective](https://opencollective.com/nest/sponsors/badge.svg)](https://opencollective.com/nest#sponsor)-->
+**🏫 Instituição:** Universidade Presbiteriana Mackenzie (UPM)
 
-## Description
+**👨‍💻 Autores:** 
+- [Pedro Henrique](https://github.com/pedrohenriquedev)  
+- [Nicholas](https://github.com/taldoNicholas)
+- [Gabriel Albano](https://github.com/AlbanoDevelope)
+- [Tamires Colaço]()
+---
 
-[Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
+## 📖 Descrição
 
-## Project setup
+**APTOGarden** é uma aplicação web desenvolvida inicialmente para a disciplina de **Desenvolvimento Web I** e expandida em **Desenvolvimento Web II**, com o objetivo de criar uma **plataforma para gerenciamento de uma fazenda urbana**.
 
-```bash
-$ npm install
-```
+Nesta nova etapa, o sistema está sendo aprimorado com **operações CRUD completas** (Criar, Ler, Atualizar, Deletar), integrando **NestJS, Node.js e MongoDB** no backend. A interface foi planejada no **Figma** com foco em experiência do usuário e responsividade.
 
-## Compile and run the project
+---
 
-```bash
-# development
-$ npm run start
+## ✨ Funcionalidades
 
-# watch mode
-$ npm run start:dev
+- Navegação intuitiva entre as páginas (Início, Sobre, Formulário, Tabela)
+- Design responsivo e acessível
+- Estruturação de informações em tabela
+- Dashboard com estatísticas de vendas e produtos populares
+- CRUD completo de:
+  - 👥 Usuários
+  - 📦 Estoque de Produtos
+  - 🚚 Entregadores
+- Pesquisa e paginação de dados
+- Design responsivo e acessível
+- Navegação lateral intuitiva
 
-# production mode
-$ npm run start:prod
-```
+---
 
-## Run tests
+## ⚙️ Tecnologias Utilizadas
 
-```bash
-# unit tests
-$ npm run test
+### 🎨 Front-end
+- HTML5
+- CSS3
+- JavaScript
+- Figma (prototipação da interface)
 
-# e2e tests
-$ npm run test:e2e
+### 🧠 Back-end
+- NestJS
+- Node.js
+- MongoDB (para estrutura de Banco de Dados)
+- Postman (para testes de API)
 
-# test coverage
-$ npm run test:cov
-```
+---
 
-## Deployment
+## 🌐 Rotas da Aplicação
 
-When you're ready to deploy your NestJS application to production, there are some key steps you can take to ensure it runs as efficiently as possible. Check out the [deployment documentation](https://docs.nestjs.com/deployment) for more information.
+### Frontend
 
-If you are looking for a cloud-based platform to deploy your NestJS application, check out [Mau](https://mau.nestjs.com), our official platform for deploying NestJS applications on AWS. Mau makes deployment straightforward and fast, requiring just a few simple steps:
+| Página        | Caminho              |
+|---------------|----------------------|
+| Início        | `/index.html`        |
+| Sobre         | `/sobre.html`        |
+| Formulário    | `/formulario.html`   |
+| Tabela        | `/tabela.html`       |
 
-```bash
-$ npm install -g @nestjs/mau
-$ mau deploy
-```
+### Backend (NestJS)
 
-With Mau, you can deploy your application in just a few clicks, allowing you to focus on building features rather than managing infrastructure.
+| Entidade        | Método  | Rota                   | Descrição                      |
+|-----------------|---------|------------------------|-------------------------------|
+| Usuários        | GET     | `/users`               | Lista todos os usuários        |
+|                 | POST    | `/users`               | Cria um novo usuário           |
+|                 | PUT     | `/users/:id`           | Atualiza um usuário específico |
+|                 | DELETE  | `/users/:id`           | Deleta um usuário específico   |
+| Produtos        | GET     | `/products`            | Lista todos os produtos        |
+|                 | POST    | `/products`            | Adiciona novo produto          |
+|                 | PUT     | `/products/:id`        | Atualiza um produto            |
+|                 | DELETE  | `/products/:id`        | Remove um produto              |
+| Entregadores    | GET     | `/deliverers`          | Lista entregadores             |
+|                 | POST    | `/deliverers`          | Cadastra entregador            |
+|                 | PUT     | `/deliverers/:id`      | Atualiza dados do entregador   |
+|                 | DELETE  | `/deliverers/:id`      | Remove entregador              |
 
-## Resources
+> 🔧 Essas rotas podem ser testadas via **Postman** durante a implementação da API.
 
-Check out a few resources that may come in handy when working with NestJS:
+---
 
-- Visit the [NestJS Documentation](https://docs.nestjs.com) to learn more about the framework.
-- For questions and support, please visit our [Discord channel](https://discord.gg/G7Qnnhy).
-- To dive deeper and get more hands-on experience, check out our official video [courses](https://courses.nestjs.com/).
-- Deploy your application to AWS with the help of [NestJS Mau](https://mau.nestjs.com) in just a few clicks.
-- Visualize your application graph and interact with the NestJS application in real-time using [NestJS Devtools](https://devtools.nestjs.com).
-- Need help with your project (part-time to full-time)? Check out our official [enterprise support](https://enterprise.nestjs.com).
-- To stay in the loop and get updates, follow us on [X](https://x.com/nestframework) and [LinkedIn](https://linkedin.com/company/nestjs).
-- Looking for a job, or have a job to offer? Check out our official [Jobs board](https://jobs.nestjs.com).
+## 🛠️ Simulação das Operações CRUD
+A interface foi planejada para simular as operações de **CRUD (Create, Read, Update, Delete)** em três áreas principais:
 
-## Support
+1. **Usuários**
+   - Cadastro de novos usuários
+   - Edição e exclusão de registros
+   - Tabela com paginação e busca
 
-Nest is an MIT-licensed open source project. It can grow thanks to the sponsors and support by the amazing backers. If you'd like to join them, please [read more here](https://docs.nestjs.com/support).
+2. **Estoque**
+   - Adição de novos produtos
+   - Edição de dados como preço, tipo, quantidade
+   - Exclusão de produtos desatualizados
 
-## Stay in touch
+3. **Entregadores**
+   - Cadastro e gerenciamento de entregadores
+   - Controle de informações como placa, CPF e celular
 
-- Author - [Kamil Myśliwiec](https://twitter.com/kammysliwiec)
-- Website - [https://nestjs.com](https://nestjs.com/)
-- Twitter - [@nestframework](https://twitter.com/nestframework)
+---
 
-## License
-
-Nest is [MIT licensed](https://github.com/nestjs/nest/blob/master/LICENSE).
+## 📜 Licença 
+© 2025 APTOGarden — Todos os direitos reservados.
