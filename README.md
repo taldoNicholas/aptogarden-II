@@ -1,4 +1,4 @@
-# 🌿 APTOGarden - Plataforma de Gestão para Fazenda Urbana
+# 🌿 APTOGarden
 
 **📚 Disciplina:** Desenvolvimento Web II
 
