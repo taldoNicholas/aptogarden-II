@@ -4,18 +4,44 @@ import { join } from 'path';
 
 @Controller()
 export class AppController {
-  @Get()
+  @Get('header')
+  getHeader(@Res() res: Response) {
+    return res.sendFile(join(__dirname, '..', 'public', 'header.html'));
+  }
+
+  @Get('footer')
+  getFooter(@Res() res: Response) {
+    return res.sendFile(join(__dirname, '..', 'public', 'footer.html'));
+  }
+  
+  @Get('index')
   getHome(@Res() res: Response) {
     return res.sendFile(join(__dirname, '..', 'public', 'index.html'));
   }
 
   @Get('sobre')
   getSobre(@Res() res: Response) {
-    return res.sendFile(join(__dirname, '..', 'public', 'sobre.html'));
+    return res.sendFile(join(__dirname, '..', 'public', 'sobre-nos.html'));
   }
 
-  @Get('contato')
-  getContato(@Res() res: Response) {
-    return res.sendFile(join(__dirname, '..', 'public', 'contato.html'));
+  @Get('perfilCliente')
+  getperfilCliente(@Res() res: Response) {
+    return res.sendFile(join(__dirname, '..', 'public', 'perfilCliente.html'));
   }
+
+  @Get('perfilAdministrador')
+  getperfilAdministrador(@Res() res: Response) {
+    return res.sendFile(join(__dirname, '..', 'public', 'perfilAdministrador.html'));
+  }
+
+  @Get('delivery')
+  getDelivery(@Res() res: Response) {
+    return res.sendFile(join(__dirname, '..', 'public', 'delivery.html'));
+  }
+
+  @Get('controleestoque')
+  getControleestoque(@Res() res: Response) {
+    return res.sendFile(join(__dirname, '..', 'public', 'controleestoque.html'));
+  }
+
 }
