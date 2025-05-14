@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <link rel="shortcut icon" type="image/x-icon" href="../img/logo.png">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <title>AptoGarden</title>
+</head>
+<body>
+
+
+<div id="header-container"></div>
+
+<main>
+    <div id="container" style="display: flex; justify-content: center; align-items: center; flex-direction: column; width: 100%; padding: 20px;">
+        <div id="item-list" style="display: flex; flex-direction: column; align-items: center; width: 100%;">
+            <div class="item" style="display: flex; justify-content: space-between; align-items: center; gap: 20px; margin: 10px; border-bottom: 2px solid black; width: 25%; padding-bottom: 10px;">
+                <img src="../img/iconAlfaceCrespa.png" style="width: 25%;" alt="Ícone Alface Crespa">
+                <div style="flex-grow: 1;">
+                    <div style="display: flex; justify-content: space-between; align-items: center;">
+                        <h1 style="margin: 0; font-weight: bold; text-align: left;">Alface Crespa</h1>
+                        <img src="../img/iconeLucro.png"alt="Este produto está dando lucro!"  style="margin-left: auto; width: 20px;">
+                    </div>
+                    <div id="quantidades" style="margin-top: 10px; text-align: left;">
+                        <div style="display: flex; justify-content: space-between; margin-bottom: 5px;">
+                            <h2 style="margin: 0;">Quantidade:</h2>
+                            <h2 style="margin: 0; color: green;">321</h2>
+                        </div>
+                        <div style="display: flex; justify-content: space-between; margin-bottom: 5px;">
+                            <h2 style="margin: 0;">Vendidos:</h2>
+                            <h2 style="margin: 0; color: red;">231</h2>
+                        </div>
+                    </div>                    
+                        <button type="button" style="margin-top:5%; margin-left:0; text-align: left;font-weight: bold;" class="botaoVERMAIS" data-bs-toggle="modal" data-bs-target="#modalAlfaceCrespa">
+                            VER MAIS
+                        </button>
+                </div>
+            </div>
+    
+            <div class="item" style="display: flex; justify-content: space-between; align-items: center; gap: 20px; margin: 10px; border-bottom: 2px solid black; width: 25%; padding-bottom: 10px;">
+                <img src="../img/iconRuculaRokita.png" style="width: 25%;" alt="Ícone Rúcula Rokita">
+                <div style="flex-grow: 1;">
+                    <div style="display: flex; justify-content: space-between; align-items: center;">
+                        <h1 style="margin: 0; font-weight: bold; text-align: left;">Rúcula Rokita</h1>
+                        <img src="../img/iconePrejuizo.png" alt="Este produto está dando prejuízo!" style="margin-left: auto; width: 20px;">
+                    </div>
+                    <div id="quantidades" style="margin-top: 10px; text-align: left;">
+                        <div style="display: flex; justify-content: space-between; margin-bottom: 5px;">
+                            <h2 style="margin: 0;">Quantidade:</h2>
+                            <h2 style="margin: 0; color: green;">189</h2>
+                        </div>
+                        <div style="display: flex; justify-content: space-between; margin-bottom: 5px;">
+                            <h2 style="margin: 0;">Vendidos:</h2>
+                            <h2 style="margin: 0; color: red;">75</h2>
+                        </div>
+                    </div>    
+                    <button type="button" style="margin-top:5%; margin-left:0; text-align: left;font-weight: bold;" class="botaoVERMAIS" data-bs-toggle="modal" data-bs-target="#modalRuculaRokita">
+                        VER MAIS
+                    </button>
+                </div>
+            </div>
+    
+            <div class="item" style="display: flex; justify-content: space-between; align-items: center; gap: 20px; margin: 10px; border-bottom: 2px solid black; width: 25%; padding-bottom: 10px;">
+                <img src="../img/iconCouveFlor.png" style="width: 25%;" alt="Ícone Couve-Flor">
+                <div style="flex-grow: 1;">
+                    <div style="display: flex; justify-content: space-between; align-items: center;">
+                        <h1 style="margin: 0; font-weight: bold; text-align: left;">Couve-flor</h1>
+                        <img src="../img/iconeLucro.png"  alt="Este produto está dando lucro!" style="margin-left: auto; width: 20px;">
+                    </div>
+                    <div id="quantidades" style="margin-top: 10px; text-align: left;">
+                        <div style="display: flex; justify-content: space-between; margin-bottom: 5px;">
+                            <h2 style="margin: 0;">Quantidade:</h2>
+                            <h2 style="margin: 0; color: green;">189</h2>
+                        </div>
+                        <div style="display: flex; justify-content: space-between; margin-bottom: 5px;">
+                            <h2 style="margin: 0;">Vendidos:</h2>
+                            <h2 style="margin: 0; color: red;">175</h2>
+                        </div>
+                    </div>    
+                    <button type="button" style="margin-top:5%; margin-left:0; text-align: left;font-weight: bold;" class="botaoVERMAIS" data-bs-toggle="modal" data-bs-target="#modalCouveFlor">
+                        VER MAIS
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+</main>
+
+<div class="modal fade" id="modalAlfaceCrespa" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="modalAlfaceCrespaLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content" style="background-color:#F0F8E9">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="modalAlfaceCrespaLabel" style="font-weight: bold;">Detalhes</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body" style="padding: 20px; display: flex; flex-direction: column; gap: 30px;">
+            <div id="titulo">
+                <h2 style="font-size: 195%; text-align: center;">Alface Crespa</h2>
+            </div>
+        
+            <div class="item" style="display: flex; justify-content: space-between; align-items: center; gap: 20px;">
+                <img src="../img/iconAlfaceCrespa.png" style="width: 25%; font-weight: bold;" alt="Ícone Alface Crespa">
+                <div style="flex-grow: 1;">
+                    <h1 style="margin: 0; font-weight: bold; font-size: 155%; text-align: left;">Alface Crespa</h1> 
+                </div>
+                <div id="precos">
+                    <h2 style="margin: 0; color: black; font-size: 155%;">Preço Original: <br>R$ 8,50/kg</h2>
+                    <br>
+                    <h2 style="margin: 0; color: red; font-size: 155%;">Preço em promoção:<br> R$6,75/kg</h2>
+                </div>
+            </div>
+        
+            <div id="graficoVendas" style="display: flex; align-items: center; justify-content: center; gap: 40px;">
+                <div id="grafico" style="flex: 1; text-align: center;">
+                    <h2 style="font-size: 155%;">Gráfico de vendas</h2>
+                    <img src="../img/graficoAlface.png" style="width: 105%; font-weight: bold;" alt="Gráfico Alface Crespa">
+                </div>
+                <div id="textoNumeroVendas" style="flex: 1;">
+                    <h2 style="font-size: 120%;">Número de vendas nos últimos 7 dias: <br> 
+                        <span style="color: green;">231 unidades</span> 
+                    </h2>
+                    <h2 style="font-size: 120%;">(+150% do mês anterior)</h2>
+                </div>
+            </div>
+        </div>
+        
+      </div>
+    </div>
+  </div>
+
+
+  <div class="modal fade" id="modalRuculaRokita" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="modalRuculaRokitaLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content" style="background-color:#F0F8E9">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="modalRuculaRokitaLabel" style="font-weight: bold;">Detalhes</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body" style="padding: 20px; display: flex; flex-direction: column; gap: 30px;">
+            <div id="titulo">
+                <h2 style="font-size: 195%; text-align: center;">Rúcula Rokita</h2>
+            </div>
+        
+            <div class="item" style="display: flex; justify-content: space-between; align-items: center; gap: 20px;">
+                <img src="../img/iconRuculaRokita.png" style="width: 25%; font-weight: bold;" alt="Ícone Rúcula Rokita">
+                <div style="flex-grow: 1;">
+                    <h1 style="margin: 0; font-weight: bold; font-size: 155%; text-align: left;">Rúcula Rokita</h1> 
+                </div>
+                <div id="precos">
+                    <h2 style="margin: 0; color: black; font-size: 155%;">Preço Original: <br>R$ 15,00/pacote</h2>
+                    <br>
+                    <h2 style="margin: 0; color: red; font-size: 155%;">Preço em promoção:<br> R$12,99/kg</h2>
+                </div>
+            </div>
+        
+            <div id="graficoVendas" style="display: flex; align-items: center; justify-content: center; gap: 40px;">
+                <div id="grafico" style="flex: 1; text-align: center;">
+                    <h2 style="font-size: 155%;">Gráfico de vendas</h2>
+                    <img src="../img/graficoRucula.png" style="width: 105%; font-weight: bold;" alt="Gráfico Rúcula Rokita">
+                </div>
+                <div id="textoNumeroVendas" style="flex: 1;">
+                    <h2 style="font-size: 120%;">Número de vendas nos últimos 7 dias: <br> 
+                        <span style="color: red;">75 unidades</span> 
+                    </h2>
+                    <h2 style="font-size: 120%;">(-15% do mês anterior)</h2>
+                </div>
+            </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <div class="modal fade" id="modalCouveFlor" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="modalCouveFlorLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content" style="background-color:#F0F8E9">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="modalCouveFlorLabel" style="font-weight: bold;">Detalhes</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body" style="padding: 20px; display: flex; flex-direction: column; gap: 30px;">
+            <div id="titulo">
+                <h2 style="font-size: 195%; text-align: center;">Couve-flor</h2>
+            </div>
+        
+            <div class="item" style="display: flex; justify-content: space-between; align-items: center; gap: 20px;">
+                <img src="../img/iconCouveFlor.png" style="width: 25%; font-weight: bold;" alt="Ícone Couve-flor">
+                <div style="flex-grow: 1;">
+                    <h1 style="margin: 0; font-weight: bold; font-size: 155%; text-align: left;">Couve-flor</h1> 
+                </div>
+                <div id="precos">
+                    <h2 style="margin: 0; color: black; font-size: 155%;">Preço Original: <br>R$ 13,00/kg</h2>
+                    <br>
+                    <h2 style="margin: 0; color: red; font-size: 155%;">Preço em promoção:<br> R$11,00/kg</h2>
+                </div>
+            </div>
+        
+            <div id="graficoVendas" style="display: flex; align-items: center; justify-content: center; gap: 40px;">
+                <div id="grafico" style="flex: 1; text-align: center;">
+                    <h2 style="font-size: 155%;">Gráfico de vendas</h2>
+                    <img src="../img/graficoCouveFlor.png" style="width: 105%; font-weight: bold;" alt="Gráfico Couve-flor">
+                </div>
+                <div id="textoNumeroVendas" style="flex: 1;">
+                    <h2 style="font-size: 120%;">Número de vendas nos últimos 7 dias: <br> 
+                        <span style="color: green;">175 unidades</span> 
+                    </h2>
+                    <h2 style="font-size: 120%;">(+86% do mês anterior)</h2>
+                </div>
+            </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+<div id="footer-container"></div>
+
+</body>
+    <script>
+        $(document).ready(function () {
+            $('#header-container').load('header.html');
+        });
+        $(document).ready(function () {
+            $('#footer-container').load('footer.html');
+        });
+    </script>
+</html>

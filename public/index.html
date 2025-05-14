@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <link rel="shortcut icon" type="image/x-icon" href="../img/logo.png">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <title>AptoGarden</title>
+</head>
+<body>
+
+
+<div id="header-container"></div>
+
+
+<main>
+
+    <div id="carrosseletexto">
+    <h1 style="color:black">A melhor <a style="color:#477822;font-weight: bold;">Fazenda Urbana</a> de São Paulo!</h1>
+
+    <div id="carrosselChacaraMarco" class="carousel slide carousel-fade" style="width:50%;margin: 0 auto;">
+        <div class="carousel-inner">
+          <div class="carousel-item active">
+            <img src="../img/imagemPlantacaoApartamento1.jpg" class="d-block w-100" alt="..." style="width: 100%;">
+          </div>
+          <div class="carousel-item">
+            <img src="../img/imagemPlantacaoApartamento2.jpg" class="d-block w-100" alt="..." style="width: 100%;">
+          </div>
+          <div class="carousel-item">
+            <img src="../img/imagemPlantacaoApartamento3.jpg" class="d-block w-100" alt="..." style="width: 100%;">
+          </div>
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#carrosselChacaraMarco" data-bs-slide="prev">
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#carrosselChacaraMarco" data-bs-slide="next">
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Next</span>
+        </button>
+      </div>
+
+      <h1 style="color:black; margin-top:2%">Seu mundo <a style="color:#477822;font-weight: bold;">mais verde</a> com a gente.</h1>
+    </div>
+      
+</main>
+<div id="footer-container"></div>
+
+</body>
+    <script>
+        $(document).ready(function () {
+            $('#header-container').load('header.html');
+        });
+        $(document).ready(function () {
+            $('#footer-container').load('footer.html');
+        });
+    </script>
+</html>

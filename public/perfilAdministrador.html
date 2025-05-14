@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <link rel="shortcut icon" type="image/x-icon" href="../img/logo.png">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <title>AptoGarden</title>
+</head>
+<body>
+
+
+<div id="header-container"></div>
+
+
+<main>
+    <div id="container" style="display: flex; justify-content: center; align-items: center; flex-direction: column; width: 100%; padding: 20px;">
+        <div id="perfil" style="display: flex; align-items: center; gap: 20px;">
+            <img src="../img/fotoAdmin.png" style="width: 100px; height: 100px; border-radius: 50%;" alt="Foto do cliente">
+            <div id="emailenome" style="display: flex; flex-direction: column; text-align: left;">
+                <h2 style="margin: 0; font-weight: bold;">Maria Beltrano Sicrano</h2>
+                <h2 style="margin: 0; font-size: 90%; font-style: italic;">mariasicrano@dominio.com</h2>
+            </div>
+        </div>
+    
+        <div id="opcoes" style="margin-top: 20px; display: flex; flex-direction: column; align-items: center; gap: 20px;">
+            <div id="opcao1" style="display: flex; align-items: center; gap: 10px; width: 125%; max-width: 625px; background-color: #D9D9D9; border-radius: 15px; padding: 15px; margin-left: -12.5%; margin-right: -12.5%;">
+                <img src="../img/iconeInformacoes.png" alt="Informações" style="width: 30px; height: 30px;">
+                <div style="display: flex; flex-direction: column; text-align: left; width: 100%; position: relative;">
+                    <div style="display: flex; flex-direction: column; background-color: #D9D9D9; padding: 10px; border-radius: 15px;">
+                        <h2 style="font-size: 165%;">Informações</h2>
+                        <h3 style="font-size: 100%; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">Seu nome e dados pessoais para que possamos te identificar.</h3>
+                    </div>
+                    <img src="../img/iconeSetaAbrir.png" style="width: 5%; position: absolute; right: 10px; top: 50%; transform: translateY(-50%);">
+                </div>
+            </div>
+            <div id="opcao2" style="display: flex; align-items: center; gap: 10px; width: 125%; max-width: 625px; background-color: #D9D9D9; border-radius: 15px; padding: 15px; margin-left: -12.5%; margin-right: -12.5%;">
+                <img src="../img/iconeUsuarios.png" alt="Usuários" style="width: 30px; height: 30px;">
+                <div style="display: flex; flex-direction: column; text-align: left; width: 100%; position: relative;">
+                    <div style="display: flex; flex-direction: column; background-color: #D9D9D9; padding: 10px; border-radius: 15px;">
+                        <h2 style="font-size: 165%;">Gerenciar usuários</h2>
+                        <h3 style="font-size: 100%; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">Verificar, desativar e criar novos acessos de administrador.</h3>
+                    </div>
+                    <img src="../img/iconeSetaAbrir.png" style="width: 5%; position: absolute; right: 10px; top: 50%; transform: translateY(-50%);">
+                </div>
+            </div>
+            <div id="opcao3" style="display: flex; align-items: center; gap: 10px; width: 125%; max-width: 625px; background-color: #D9D9D9; border-radius: 15px; padding: 15px; margin-left: -12.5%; margin-right: -12.5%;">
+                <img src="../img/iconeGerenciarEstoque.png" alt="Gerenciar Estoque" style="width: 30px; height: 30px;">
+                <div style="display: flex; flex-direction: column; text-align: left; width: 100%; position: relative;">
+                    <div style="display: flex; flex-direction: column; background-color: #D9D9D9; padding: 10px; border-radius: 15px;">
+                        <h2 style="font-size: 165%;">Gerenciar Estoque</h2>
+                        <h3 style="font-size: 100%; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">Atualize o estoque de produtos do site.</h3>
+                    </div>
+                    <img src="../img/iconeSetaAbrir.png" style="width: 5%; position: absolute; right: 10px; top: 50%; transform: translateY(-50%);">
+                </div>
+            </div>
+            <div id="opcao4" style="display: flex; align-items: center; gap: 10px; width: 125%; max-width: 625px; background-color: #D9D9D9; border-radius: 15px; padding: 15px; margin-left: -12.5%; margin-right: -12.5%;">
+                <img src="../img/iconeSeguranca.png" alt="Segurança" style="width: 30px; height: 30px;">
+                <div style="display: flex; flex-direction: column; text-align: left; width: 100%; position: relative;">
+                    <div style="display: flex; flex-direction: column; background-color: #D9D9D9; padding: 10px; border-radius: 15px;">
+                        <h2 style="font-size: 165%;">Segurança</h2>
+                        <h3 style="font-size: 100%; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">Suas configurações de segurança pessoais.</h3>
+                    </div>
+                    <img src="../img/iconeSetaAbrir.png" style="width: 5%; position: absolute; right: 10px; top: 50%; transform: translateY(-50%);">
+                </div>
+            </div>
+            <h1 style="color:black;font-size: 95%;margin-right: -8%; white-space: nowrap;">Em caso de problemas, sinta-se à vontade para contatar o <a id="suporte" href="" style="color:#477822;font-weight: bold;text-decoration: none;">nosso suporte 24 horas</a>.</h1>
+        </div>  
+    </div>  
+</main>
+
+
+
+</main>
+
+<div id="footer-container"></div>
+
+</body>
+    <script>
+        $(document).ready(function () {
+            $('#header-container').load('header.html');
+        });
+        $(document).ready(function () {
+            $('#footer-container').load('footer.html');
+        });
+    </script>
+    <script>
+        document.getElementById('suporte').onclick = function(event) {
+            event.preventDefault(); // Evita o comportamento padrão do link
+            const audio = document.getElementById('audioPlayer');
+            audio.play();
+        };
+    </script>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<audio id="audioPlayer" src="../audio/de-copao-na-mao-estourado (1).mp3"></audio>

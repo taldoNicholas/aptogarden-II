@@ -1,0 +1,396 @@
+<style>
+        body {
+            font-family: 'IBM Plex Serif', serif;
+            background-color: #8E8E8E;
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            background-color: #FAFAFA;
+            text-align: center;
+        }
+
+        .logo-placeholder {
+            width: 100px;
+            height: 100px;
+            margin-right: 20px;
+        }
+
+        h1 {
+            font-family: 'Italiana', serif; /* Fonte Italiana aplicada */
+            font-size: 48px; /* Tamanho do texto maior */
+            color: #477822;
+            margin: 0;
+            text-align: center; /* Centralizado */
+        }
+
+        nav {
+            background-color: #B4C8AC;
+            padding: 10px;
+            text-align: center;
+        }
+
+        nav a {
+            color: #477822;
+            text-decoration: none;
+            font-weight: bold;
+            margin: 0 15px;
+        }
+
+        main {
+            padding: 40px 20px;
+        }
+
+        .section-title {
+            font-size: 30px;
+            color: #477822;
+            background-color: #B4C8AC;
+            padding: 10px;
+            border-radius: 8px;
+            display: inline-block;
+            text-align: center;
+            margin: 0 auto; 
+            display: block; 
+            width: fit-content; 
+        }
+
+        .botaoVERMAIS {
+            font-size: 30px;
+            color: white;
+            background-color: #B4C8AC;
+            padding: 10px;
+            border-radius: 8px;
+            display: inline-block;
+            text-align: center;
+            margin: 0 auto; 
+            display: block; 
+            width: fit-content;
+            border: none;
+    
+        }
+
+
+        .content {
+            max-width: 800px;
+            margin: 0 auto;
+            color: #477822;
+        }
+
+        .content p {
+            margin-bottom: 20px;
+            line-height: 1.6;
+        }
+
+        .highlight {
+            font-size: 24px; /* Tamanho maior para destaque */
+            font-weight: bold;
+            color: #477822;
+            margin-bottom: 20px;
+        }
+
+        .image-container {
+            display: flex;
+            justify-content: space-between;
+            margin: 20px 0;
+        }
+
+        .image-1 {
+            width: 48%;
+        }
+
+        .image-2 {
+            width: 48%;
+        }
+
+        .image-1 img, .image-2 img {
+            width: 100%;
+            height: auto;
+        }
+
+        .tabela {
+            width: 100%; /* Define a largura total da tabela */
+            border-collapse: collapse; /* Remove os espaços entre as bordas */
+            margin-top: 20px; /* Adiciona um espaço acima da tabela */
+        }
+
+        .tabela th, .tabela td {
+            border: 1px solid #477822; /* Define a cor e estilo da borda */
+            padding: 10px; /* Adiciona espaço interno nas células */
+            text-align: left; /* Alinha o texto à esquerda */
+        }
+
+        .tabela thead {
+            background-color: #B4C8AC; /* Cor de fundo para o cabeçalho */
+            color: #FAFAFA; /* Cor do texto no cabeçalho */
+        }
+
+        .tabela tfoot {
+            background-color: #D8E9C4; /* Cor de fundo para o rodapé */
+            font-weight: bold; /* Destaca o total */
+        }
+
+        .tabela tbody tr:nth-child(even) {
+            background-color: #F0F0F0; /* Cor de fundo alternada para as linhas pares */
+        }
+
+        .social-container {
+            text-align: center;
+            margin-top: 40px;
+        }
+
+        .social-container h3 {
+            font-size: 22px;
+            color: #477822;
+        }
+
+        .social-icons {
+            margin: 20px 0;
+        }
+
+        .social-icons i {
+            margin: 0 10px;
+            font-size: 28px;
+            color: #477822;
+        }
+
+        .social-image img {
+            width: 80%; /* Reduzindo um pouco o tamanho da imagem 3 */
+            max-width: 300px; /* Tamanho máximo */
+            height: auto;
+            margin-top: 20px;
+        }
+
+        footer {
+            text-align: center;
+            padding: 20px;
+            background-color: #477822;
+            color: #FAFAFA;
+        }
+
+        footer a {
+            color: #FAFAFA;
+            text-decoration: none;
+        }
+
+        .center-images {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .center-images img {
+            margin-top: 5%
+        }
+
+        .students {
+    text-align: center; /* Center text */
+}
+
+.student {
+    display: inline-block; /* Aligns images and text in a row */
+    margin: 20px; /* Space between each student */
+}
+
+.student img {
+    max-width: 100px; /* Set a maximum width for images */
+    height: auto; /* Maintain aspect ratio */
+    display: block; /* Ensures the image is a block element */
+    margin: 0 auto; /* Centers the image within the div */
+}
+
+.student a {
+    display: block; /* Makes the link a block element */
+    margin-top: 5px; /* Space between image and link */
+}
+
+body {
+    font-family: 'IBM Plex Serif', serif;
+    background-color: #FAFAFA;
+    margin: 0;
+    padding: 0;
+    
+}
+
+header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    background-color: #FAFAFA;
+    text-align: center;
+}
+
+.logo-placeholder {
+    width: 100px;
+    height: 100px;
+    margin-right: 20px;
+}
+
+h1 {
+    font-family: 'Italiana', serif; /* Fonte Italiana aplicada */
+    font-size: 48px; /* Tamanho do texto maior */
+    color: #477822;
+    margin: 0;
+    text-align: center; /* Centralizado */
+}
+
+nav {
+    background-color: #B4C8AC;
+    padding: 10px;
+    text-align: center;
+}
+
+nav a {
+    color: #477822;
+    text-decoration: none;
+    font-weight: bold;
+    margin: 0 15px;
+}
+
+main {
+    padding: 40px 20px;
+    
+}
+
+.section-title {
+    font-size: 30px;
+    color: #FFFFFF;
+    background-color: #B4C8AC; /* Destaque como um botão */
+    padding: 10px;
+    border-radius: 8px;
+    display: inline-block;
+    text-align: center;
+    margin: 0 auto; /* Centraliza o elemento */
+    display: block; /* Torna ele block para centralizar com o margin auto */
+    width: fit-content; /* Ajusta o tamanho ao conteúdo */
+}
+
+.content {
+    max-width: 800px;
+    margin: 0 auto;
+    color: #477822;
+}
+
+.content p {
+    margin-bottom: 20px;
+    line-height: 1.6;
+}
+
+.highlight {
+    font-size: 24px; /* Tamanho maior para destaque */
+    font-weight: bold;
+    color: #477822;
+    margin-bottom: 20px;
+}
+
+.image-container {
+    display: flex;
+    justify-content: space-between;
+    margin: 20px 0;
+}
+
+.image-1 {
+    width: 48%;
+}
+
+.image-2 {
+    width: 48%;
+}
+
+.image-1 img, .image-2 img {
+    width: 100%;
+    height: auto;
+}
+
+.tabela {
+    width: 100%; /* Define a largura total da tabela */
+    border-collapse: collapse; /* Remove os espaços entre as bordas */
+    margin-top: 20px; /* Adiciona um espaço acima da tabela */
+}
+
+.tabela th, .tabela td {
+    border: 1px solid #477822; /* Define a cor e estilo da borda */
+    padding: 10px; /* Adiciona espaço interno nas células */
+    text-align: left; /* Alinha o texto à esquerda */
+}
+
+.tabela thead {
+    background-color: #B4C8AC; /* Cor de fundo para o cabeçalho */
+    color: #FAFAFA; /* Cor do texto no cabeçalho */
+}
+
+.tabela tfoot {
+    background-color: #D8E9C4; /* Cor de fundo para o rodapé */
+    font-weight: bold; /* Destaca o total */
+}
+
+.tabela tbody tr:nth-child(even) {
+    background-color: #F0F0F0; /* Cor de fundo alternada para as linhas pares */
+}
+
+.social-container {
+    text-align: center;
+    margin-top: 40px;
+}
+
+.social-container h3 {
+    font-size: 22px;
+    color: #477822;
+}
+
+.social-icons {
+    margin: 20px 0;
+}
+
+.social-icons i {
+    margin: 0 10px;
+    font-size: 28px;
+    color: #477822;
+}
+
+.social-image img {
+    width: 80%; /* Reduzindo um pouco o tamanho da imagem 3 */
+    max-width: 300px; /* Tamanho máximo */
+    height: auto;
+    margin-top: 20px;
+}
+
+footer {
+    text-align: center;
+    padding: 20px;
+    background-color: #477822;
+    color: #FAFAFA;
+}
+
+footer a {
+    color: #FAFAFA;
+    text-decoration: none;
+}
+.students {
+text-align: center; /* Center text */
+}
+
+.student {
+display: inline-block; /* Aligns images and text in a row */
+margin: 20px; /* Space between each student */
+}
+
+.student img {
+max-width: 100px; /* Set a maximum width for images */
+height: auto; /* Maintain aspect ratio */
+display: block; /* Ensures the image is a block element */
+margin: 0 auto; /* Centers the image within the div */
+}
+
+.student a {
+display: block; /* Makes the link a block element */
+margin-top: 5px; /* Space between image and link */
+
+           
+
+    </style>

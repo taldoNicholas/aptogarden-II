@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <link rel="shortcut icon" type="image/x-icon" href="../img/logo.png">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <title>AptoGarden</title>
+</head>
+<body>
+
+
+<div id="header-container"></div>
+
+
+<main>
+    <section id="sobre">
+        <div class="content">
+            <p class="highlight">Inovar e reciclar!</p> <!-- Destaque maior -->
+            <p style="color:#000000;">Este é o nosso lema. Com foco na criação de soluções inovadoras, nós buscamos aproveitar os recursos para minimizar o desperdício, promovendo um conceito ético e sustentável.</p>
+
+            <div class="image-container">
+                <div class="image-1">
+                    <!-- Imagem 1: três pessoas -->
+                    <img src="../img/sobrenos1.png" alt="Imagem 1 - Três Pessoas">
+                </div>
+                <div class="image-2">
+                    <!-- Imagem 2: mulher na estrada com árvores -->
+                    <img src="../img/sobrenos2.png" alt="Imagem 2 - Mulher e Estrada">
+                </div>
+            </div>
+
+            <p class="highlight">De casa para o Brasil!</p> <!-- Destaque maior -->
+            <p style="color:#000000;">Durante a pandemia, uma família começou uma pequena plantação para consumo próprio, mas logo viu a oportunidade de distribuir verduras e temperos para o condomínio, oferecendo produtos frescos e sem industrialização. <br><br>  Com o tempo, a ideia foi se expandindo, e o negócio tornou as proporções atuais, permitindo com que moradores e clientes de outros condomínios possam pedir vegetais orgânicos do conforto de sua casa.</p>
+
+        </div>
+
+        <div class="social-container">
+            <h3>Acompanhe nossas redes sociais:</h3>
+            <div class="social-icons">
+                <!-- Ícones de redes sociais -->
+            </div>
+            <div class="social-image">
+                <img src="../img/sobrenos3.png" alt="Imagem 3 - Redes Sociais">
+            </div>
+        </div>
+    </section>
+</main>
+
+<div id="footer-container"></div>
+
+</body>
+    <script>
+        $(document).ready(function () {
+            $('#header-container').load('header.html');
+        });
+        $(document).ready(function () {
+            $('#footer-container').load('footer.html');
+        });
+    </script>
+</html>
