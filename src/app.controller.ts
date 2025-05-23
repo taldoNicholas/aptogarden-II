@@ -44,4 +44,10 @@ export class AppController {
     return res.sendFile(join(__dirname, '..', 'public', 'controleestoque.html'));
   }
 
+  
+  @Get('adminDashboard')
+  getAdmindashboard(@Res() res: Response) {
+    return res.sendFile(join(__dirname, '..', 'public', 'admindashboard.html'));
+  }
+
 }
