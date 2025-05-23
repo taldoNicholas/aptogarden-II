@@ -1,0 +1,182 @@
+<!-- admin-dashboard.html -->
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <title>Admin - AptoGarden</title>
+  <link rel="stylesheet" href="../public/css/stylesheet.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+  <div id="header-container"></div>
+  <main class="content">
+    <h2 class="section-title">Painel Administrativo</h2>
+    <br>
+
+    <div style="display: flex; justify-content: center; gap: 20px; margin-bottom: 30px;">
+      <button class="botaoVERMAIS" onclick="mostrarSecao('usuarios')">Gerenciar Usuários</button>
+      <button class="botaoVERMAIS" onclick="mostrarSecao('produtos')">Gerenciar Produtos</button>
+      <button class="botaoVERMAIS" onclick="mostrarSecao('entregadores')">Gerenciar Entregadores</button>
+    </div>
+
+    <section class="dashboard">
+      <div class="card">
+        <h3>Vendas do dia</h3>
+        <p class="valor">R$1836,75</p>
+        <p class="comparacao verde"><i class="fas fa-arrow-up"></i> 10% vs. Ontem</p>
+      </div>
+
+      <div class="card">
+        <h3>Gráfico de Vendas</h3>
+        <canvas id="graficoVendas" width="150" height="75"></canvas>
+      </div>
+
+      <div class="card">
+        <h3>Produtos Mais Vendidos</h3>
+        <ul class="mais-vendidos">
+          <li><img src="../public/img/iconAlfaceCrespa.png" alt="Alface" width="25%"> Alface Crespa</li>
+          <li><img src="../public/img/iconCouveFlor.png" alt="Couve-flor" width="25%"> Couve-flor</li>
+          <li><img src="../public/img/iconRuculaRokita.png" alt="Rúcula" width="25%"> Rúcula Rokita</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <h3>Meta</h3>
+        <progress value="65000" max="100000"></progress>
+        <p>R$65k de R$100k</p>
+      </div>
+    </section>
+
+    <section id="usuarios-section">
+      <div class="section-title">Gerenciar Usuários</div>
+      <button id="btnAddUser" class="botaoVERMAIS">Adicionar Usuário</button>
+      <input type="text" id="searchUser" placeholder="Buscar...">
+      <table class="tabela" id="usuariosTable">
+        <thead><tr><th>#</th><th>Nome</th><th>E-mail</th><th>Celular</th><th>CPF</th><th>Ações</th></tr></thead>
+        <tbody></tbody>
+      </table>
+    </section>
+
+    <section id="produtos-section" style="display:none">
+      <div class="section-title">Gerenciar Produtos</div>
+      <p style="text-align:center">(Funcionalidade em desenvolvimento...)</p>
+    </section>
+
+    <section id="entregadores-section" style="display:none">
+      <div class="section-title">Gerenciar Entregadores</div>
+      <p style="text-align:center">(Funcionalidade em desenvolvimento...)</p>
+    </section>
+  </main>
+  <div id="footer-container"></div>
+
+  <div id="modalUsuario" class="modal" style="display:none">
+    <div class="modal-conteudo">
+      <h3>Usuário</h3>
+      <form id="userForm">
+        <input type="hidden" id="userId">
+        <label>Nome:</label>
+        <input type="text" id="userNome" required>
+        <label>Email:</label>
+        <input type="email" id="userEmail" required>
+        <label>Celular:</label>
+        <input type="text" id="userCelular" required>
+        <label>CPF:</label>
+        <input type="text" id="userCpf" required>
+        <button type="submit">Salvar</button>
+        <button type="button" onclick="$('#modalUsuario').hide()">Cancelar</button>
+      </form>
+    </div>
+  </div>
+
+  <script>
+    $(document).ready(function () {
+      $('#header-container').load('header.html');
+      $('#footer-container').load('footer.html');
+    });
+
+    function mostrarSecao(secao) {
+      $('#usuarios-section').hide();
+      $('#produtos-section').hide();
+      $('#entregadores-section').hide();
+      $(`#${secao}-section`).show();
+    }
+
+    const ctx = document.getElementById('graficoVendas');
+    new Chart(ctx, {
+      type: 'line',
+      data: {
+        labels: ['Seg', 'Ter', 'Qua', 'Qui', 'Sex', 'Sab', 'Dom'],
+        datasets: [{
+          label: 'Vendas',
+          data: [1200, 1500, 1100, 1700, 1836, 1400, 1600],
+          borderColor: 'green',
+          fill: false
+        }]
+      }
+    });
+
+    let usuarios = [];
+
+    function renderUsuarios() {
+      const tbody = $('#usuariosTable tbody');
+      tbody.empty();
+      usuarios.forEach((u, i) => {
+        tbody.append(`<tr>
+          <td>${i+1}</td>
+          <td>${u.nome}</td>
+          <td>${u.email}</td>
+          <td>${u.celular}</td>
+          <td>${u.cpf}</td>
+          <td>
+            <i class="fas fa-edit" onclick="editarUsuario(${i})"></i>
+            <i class="fas fa-trash" onclick="excluirUsuario(${i})"></i>
+          </td>
+        </tr>`);
+      });
+    }
+
+    $('#btnAddUser').click(() => {
+      $('#userForm')[0].reset();
+      $('#userId').val('');
+      $('#modalUsuario').show();
+    });
+
+    $('#userForm').submit(function(e) {
+      e.preventDefault();
+      const id = $('#userId').val();
+      const usuario = {
+        nome: $('#userNome').val(),
+        email: $('#userEmail').val(),
+        celular: $('#userCelular').val(),
+        cpf: $('#userCpf').val()
+      };
+      if (id === '') {
+        usuarios.push(usuario);
+      } else {
+        usuarios[parseInt(id)] = usuario;
+      }
+      $('#modalUsuario').hide();
+      renderUsuarios();
+    });
+
+    function editarUsuario(i) {
+      const u = usuarios[i];
+      $('#userId').val(i);
+      $('#userNome').val(u.nome);
+      $('#userEmail').val(u.email);
+      $('#userCelular').val(u.celular);
+      $('#userCpf').val(u.cpf);
+      $('#modalUsuario').show();
+    }
+
+    function excluirUsuario(i) {
+      if (confirm('Deseja excluir este usuário?')) {
+        usuarios.splice(i, 1);
+        renderUsuarios();
+      }
+    }
+  </script>
+</body>
+</html>
