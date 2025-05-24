@@ -907,7 +907,7 @@ progress::-moz-progress-bar {
 
 /*Pagina de Login */
 
-main {
+.main-login {
   display: flex;
   justify-content: center;
   align-items: center;
