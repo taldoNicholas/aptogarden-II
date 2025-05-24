@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <link rel="shortcut icon" type="image/x-icon" href="../img/logo.png">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <title>AptoGarden</title>
+</head>
+<body>
+    <div id="header-container"></div>
+
+    <main>
+
+        <div class="preferencia-box">
+            <h2 class="section-title">Preferências</h2>
+            <div class="preferencia-item">
+              <div class="preferencia-titulo">
+                <i class="fas fa-envelope"></i>
+                <strong>Ofertas</strong>
+              </div>
+              <p>Quero receber emails sobre ofertas:</p>
+              <label><input type="radio" name="ofertas" /> Nunca <i class="far fa-frown"></i></label>
+                <label><input type="radio" name="ofertas" /> Sempre <i class="far fa-smile"></i></label>
+
+            </div>
+          
+            <div class="preferencia-item">
+              <div class="preferencia-titulo">
+                <i class="fas fa-chart-bar"></i>
+                <strong>Estatísticas</strong>
+              </div>
+              <p>Quero gerar estatísticas de minhas compras:</p>
+              <label><input type="radio" name="estatisticas" /> Nunca <i class="far fa-frown"></i></label>
+              <label><input type="radio" name="estatisticas" checked /> Sempre <i class="far fa-smile"></i></label>
+            </div>
+          
+            <div class="preferencia-item">
+              <div class="preferencia-titulo">
+                <i class="fas fa-clock"></i>
+                <strong>Horários</strong>
+              </div>
+              <p>Prefiro que meus pedidos cheguem de:</p>
+              <label><input type="radio" name="horario" checked /> Manhã</label>
+              <label><input type="radio" name="horario" /> Tarde</label>
+            </div>
+        </div>
+          
+    </main>
+    <div id="footer-container"></div>
+
+</body>
+    <script>
+        $(document).ready(function () {
+            $('#header-container').load('header.html');
+        });
+        $(document).ready(function () {
+            $('#footer-container').load('footer.html');
+        });
+    </script>
+</html>
+

@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <link rel="shortcut icon" type="image/x-icon" href="../img/logo.png">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <title>AptoGarden</title>
+</head>
+<body>
+    <div id="header-container"></div>
+
+    <main>
+        <h2 class="section-title">Informações</h2>
+        <div class="perfil-area">
+          <div class="perfil-topo">
+            <div class="perfil-foto">
+              <span class="perfil-foto-label">Foto de perfil</span>
+              <div class="perfil-foto-circulo">
+                <img src="https://cdn-icons-png.flaticon.com/512/4140/4140048.png" alt="Perfil">
+              </div>
+              <button class="perfil-foto-btn" title="Alterar foto">
+                <i class="fa-solid fa-camera"></i>
+              </button>
+            </div>
+            <div class="perfil-info">
+              <div class="perfil-info-titulo">
+                Quantidade de pedidos feitos até agora:
+                <div class="perfil-info-pedidos">
+                  <a href="#" class="perfil-info-pedidos-link">15 pedidos</a>
+                </div>
+              </div>
+              <div class="perfil-info-mais">
+                Produtos mais pedidos:
+                <ul>
+                  <li><span class="rucula">● Rúcula</span></li>
+                  <li><span class="couve">● Couve-flor</span></li>
+                  <li><span class="mandioca">● Mandioca</span></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          <div class="perfil-form">
+            <div class="perfil-form-campo">
+              <label for="primeiro-nome">Primeiro nome</label>
+              <div class="perfil-form-input">
+                <input id="primeiro-nome" type="text" value="Fulano">
+                <i class="fa-solid fa-pen"></i>
+              </div>
+            </div>
+            <div class="perfil-form-campo">
+              <label for="sobrenome">Sobrenome</label>
+              <div class="perfil-form-input">
+                <input id="sobrenome" type="text" value="Ciclano da SIva">
+                <i class="fa-solid fa-pen"></i>
+              </div>
+            </div>
+          </div>
+          <div class="perfil-card perfil-card-btn">
+            <i class="fa-solid fa-box-open perfil-card-icone"></i>
+            <div class="perfil-card-conteudo">
+              <div class="perfil-card-titulo">Meus pedidos</div>
+              <div class="perfil-card-desc">Confira aqui seu histórico de pedidos</div>
+            </div>
+            <i class="fa-solid fa-chevron-down perfil-card-seta"></i>
+          </div>
+          <div class="perfil-card perfil-card-btn">
+            <i class="fa-solid fa-comments perfil-card-icone"></i>
+            <div class="perfil-card-conteudo">
+              <div class="perfil-card-titulo">Minhas mensagens</div>
+              <div class="perfil-card-desc">Confira aqui suas mensagens</div>
+            </div>
+            <i class="fa-solid fa-chevron-down perfil-card-seta"></i>
+          </div>
+        </div>
+        
+          
+          
+    </main>
+    <div id="footer-container"></div>
+
+</body>
+    <script>
+        $(document).ready(function () {
+            $('#header-container').load('header.html');
+        });
+        $(document).ready(function () {
+            $('#footer-container').load('footer.html');
+        });
+    </script>
+</html>
+

@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <link rel="shortcut icon" type="image/x-icon" href="../img/logo.png">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <title>AptoGarden</title>
+</head>
+<body>
+    <div id="header-container"></div>
+
+    <main>
+        <h2 class="section-title">Endereços</h2>
+        <div class="endereco-box">
+            <div class="endereco-topo">
+              <span class="endereco-titulo">
+                <i class="fas fa-home"></i> Endereço 1
+              </span>
+              <div class="endereco-acoes">
+                <i class="fas fa-pen icone" title="Editar"></i>
+                <i class="fas fa-trash icone" title="Excluir"></i>
+              </div>
+            </div>
+            <div class="endereco-detalhes">
+              <p>CEP 04022-030 - São Paulo - São Paulo</p>
+              <p>11/99000000 - Paloma Estores</p>
+            </div>
+          </div>     
+          
+        <div class="endereco-box">
+            <div class="endereco-topo">
+              <span class="endereco-titulo">
+                <i class="fas fa-home"></i> Endereço 2
+              </span>
+              <div class="endereco-acoes">
+                <i class="fas fa-pen icone" title="Editar"></i>
+                <i class="fas fa-trash icone" title="Excluir"></i>
+              </div>
+            </div>
+            <div class="endereco-detalhes">
+              <p>CEP 04022-030 - São Paulo - São Paulo</p>
+              <p>11/99000000 - Paloma Estores</p>
+            </div>
+          </div>  
+          <div class="Ad-endereco-box">
+            <div class="Ad-endereco-topo">
+              <span class="Ad-endereco-titulo">
+                <i></i> Adicionar Endereços
+              </span>
+            </div>
+          </div>
+
+
+    </main>
+    <div id="footer-container"></div>
+
+</body>
+    <script>
+        $(document).ready(function () {
+            $('#header-container').load('header.html');
+        });
+        $(document).ready(function () {
+            $('#footer-container').load('footer.html');
+        });
+    </script>
+</html>
+
