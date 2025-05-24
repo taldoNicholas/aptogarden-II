@@ -904,4 +904,211 @@ progress::-moz-progress-bar {
 .perfil-card-btn:hover {
     background: #bdbdbd;
 }
-  
+
+/*Pagina de Login */
+
+main {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%; /* ocupa toda a altura da tela */
+}
+
+.login-container {
+  background-color: #d9d9d9;
+  padding: 30px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  width: 400px;
+}
+
+.login-container h2 {
+  font-size: 32px;
+  margin-bottom: 10px;
+}
+
+.login-container p {
+  margin-bottom: 20px;
+  font-size: 20px;
+}
+
+label {
+  display: block;
+  margin-bottom: 5px;
+  font-size: 20px;
+  font-weight: bold;
+}
+
+input[type="email"],
+input[type="password"] {
+  width: calc(100% - 40px);
+  padding: 10px;
+  margin-bottom: 15px;
+  font-size: 16px;
+  border: 1px solid #999;
+  border-radius: 5px;
+}
+
+.input-icon-wrapper {
+  position: relative;
+}
+
+.input-icon-wrapper input {
+  width: 100%;
+  padding-right: 40px;
+}
+
+.input-icon-wrapper .icon {
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 18px;
+}
+
+.options {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.options label {
+  font-weight: normal;
+  font-size: 18px;
+}
+
+.options a {
+  color: #497f36;
+  font-weight: bold;
+  font-size: 16px;
+  text-decoration: none;
+}
+
+.login-button {
+  width: 100%;
+  padding: 15px;
+  background-color: #497f36;
+  color: white;
+  font-size: 28px;
+  font-weight: bold;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+.login-button:hover {
+  background-color: #3c682c;
+}
+.register-container {
+  background-color: #d9d9d9;
+  padding: 30px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  width: 400px;
+}
+
+.register-container h2 {
+  font-size: 32px;
+  margin-bottom: 10px;
+}
+
+.register-container p {
+  margin-bottom: 20px;
+  font-size: 20px;
+}
+/* Pagina de Cadastro*/
+
+.cadastro-box {
+  background-color: #ddd;
+  padding: 25px 30px;
+  border-radius: 10px;
+  width: 100%;
+  max-width: 400px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.cadastro-box h2 {
+  margin-top: 0;
+  font-size: 26px;
+}
+
+.cadastro-box p {
+  font-size: 16px;
+  margin-bottom: 20px;
+}
+
+label {
+  display: block;
+  margin-top: 15px;
+  font-weight: bold;
+}
+
+.input-group {
+  position: relative;
+  display: flex;
+  align-items: center;
+  margin-top: 5px;
+}
+
+.input-group input {
+  width: 100%;
+  padding: 10px 35px 10px 10px;
+  font-size: 14px;
+  border: 1px solid #999;
+  border-radius: 5px;
+  height: 40px;
+  box-sizing: border-box;
+}
+
+.icon {
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #444;
+  display: flex;
+  align-items: center;
+}
+
+
+input[type="text"],
+input[type="email"],
+input[type="password"] {
+  height: 40px;
+}
+
+input[type="text"]:focus,
+input[type="email"]:focus,
+input[type="password"]:focus {
+  outline: none;
+  border-color: #3b772d;
+}
+
+button {
+  width: 100%;
+  background-color: #3b772d;
+  color: white;
+  border: none;
+  padding: 12px;
+  border-radius: 10px;
+  margin-top: 20px;
+  font-size: 18px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #2e5d22;
+}
+
+.possuo-conta {
+  text-align: center;
+  margin-top: 15px;
+  font-size: 14px;
+}
+
+.possuo-conta span {
+  color: green;
+  font-weight: bold;
+}
