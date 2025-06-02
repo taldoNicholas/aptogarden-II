@@ -1,15 +1,29 @@
 import { Module } from '@nestjs/common';
+import { ConfigModule, ConfigService } from '@nestjs/config';
 import { MongooseModule } from '@nestjs/mongoose';
-import { UserModule } from './user/user.module';
-import { AppController } from './app.controller';
-import { AppService } from './app.service';
+import { ProdutosModule } from './produtos/produtos.module';
+import { UsuariosModule } from './usuarios/usuarios.module';
 
 @Module({
   imports: [
-    MongooseModule.forRoot('mongodb://localhost:27017/aptogarden'),
-    UserModule,
+    ConfigModule.forRoot({
+      isGlobal: true,
+    }),
+    MongooseModule.forRootAsync({
+      imports: [ConfigModule],
+      inject: [ConfigService],
+      useFactory: (configService: ConfigService) => {
+        const uri = configService.get<string>('MONGO_URI');
+        if (!uri) {
+          throw new Error('MONGO_URI não está definida no .env');
+        }
+        return {
+          uri,
+        };
+      },
+    }),
+    ProdutosModule,
+    UsuariosModule,
   ],
-  controllers: [AppController],
-  providers: [AppService],
 })
 export class AppModule {}

@@ -16,60 +16,60 @@
             <h2>Cadastro</h2>
             <p>Preencha os dados abaixo para criar sua conta.</p>
 
-      
-            <label for="username">Username:</label>
-            <div class="input-group">
-            <input type="text" id="username" placeholder="ex: fulano123">
-            <span class="icon">
-                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
-                <path d="M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/>
-                <path d="M14 14s-1-4-6-4-6 4-6 4v1h12v-1z"/>
-                </svg>
-            </span>
-            </div>
+            <form id="formCadastro">
+                <label for="username">Username:</label>
+                <div class="input-group">
+                <input type="text" id="username" placeholder="ex: fulano123">
+                <span class="icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+                    <path d="M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/>
+                    <path d="M14 14s-1-4-6-4-6 4-6 4v1h12v-1z"/>
+                    </svg>
+                </span>
+                </div>
 
-            <label for="email">Gmail:</label>
-            <div class="input-group">
-            <input type="email" id="email" placeholder="ex: fulano@gmail.com">
-            <span class="icon">
-                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
-                <path d="M0 4a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v1.5l-8 5-8-5V4z"/>
-                <path d="M0 6.5v5A2.5 2.5 0 0 0 2.5 14h11A2.5 2.5 0 0 0 16 11.5v-5l-8 5-8-5z"/>
-                </svg>
-            </span>
-            </div>
-
-           
-            <label for="cpf">CPF:</label>
-            <div class="input-group">
-                <input type="text" id="cpf" placeholder="000.000.000-00">
-            </div>
+                <label for="email">Gmail:</label>
+                <div class="input-group">
+                <input type="email" id="email" placeholder="ex: fulano@gmail.com">
+                <span class="icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+                    <path d="M0 4a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v1.5l-8 5-8-5V4z"/>
+                    <path d="M0 6.5v5A2.5 2.5 0 0 0 2.5 14h11A2.5 2.5 0 0 0 16 11.5v-5l-8 5-8-5z"/>
+                    </svg>
+                </span>
+                </div>
 
             
-            <label for="senha">Senha:</label>
-            <div class="input-group">
-            <input type="password" id="senha">
-            <span class="icon">
-                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
-                <path d="M8 1a4 4 0 0 0-4 4v2H3.5A1.5 1.5 0 0 0 2 8.5v5A1.5 1.5 0 0 0 3.5 15h9A1.5 1.5 0 0 0 14 13.5v-5A1.5 1.5 0 0 0 12.5 7H12V5a4 4 0 0 0-4-4zM6 5a2 2 0 1 1 4 0v2H6V5z"/>
-                </svg>
-            </span>
-            </div>
+                <label for="cpf">CPF:</label>
+                <div class="input-group">
+                    <input type="text" id="cpf" placeholder="000.000.000-00">
+                </div>
 
+                
+                <label for="senha">Senha:</label>
+                <div class="input-group">
+                <input type="password" id="senha">
+                <span class="icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+                    <path d="M8 1a4 4 0 0 0-4 4v2H3.5A1.5 1.5 0 0 0 2 8.5v5A1.5 1.5 0 0 0 3.5 15h9A1.5 1.5 0 0 0 14 13.5v-5A1.5 1.5 0 0 0 12.5 7H12V5a4 4 0 0 0-4-4zM6 5a2 2 0 1 1 4 0v2H6V5z"/>
+                    </svg>
+                </span>
+                </div>
+
+                
+                <label for="confirmar">Confirme a Senha:</label>
+                <div class="input-group">
+                <input type="password" id="confirmar">
+                <span class="icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+                    <path d="M8 1a4 4 0 0 0-4 4v2H3.5A1.5 1.5 0 0 0 2 8.5v5A1.5 1.5 0 0 0 3.5 15h9A1.5 1.5 0 0 0 14 13.5v-5A1.5 1.5 0 0 0 12.5 7H12V5a4 4 0 0 0-4-4zM6 5a2 2 0 1 1 4 0v2H6V5z"/>
+                    </svg>
+                </span>
+                </div>
+                <button type="submit">Cadastrar</button>
+                <p id="mensagem"></p>
+            </form>
             
-            <label for="confirmar">Confirme a Senha:</label>
-            <div class="input-group">
-            <input type="password" id="confirmar">
-            <span class="icon">
-                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
-                <path d="M8 1a4 4 0 0 0-4 4v2H3.5A1.5 1.5 0 0 0 2 8.5v5A1.5 1.5 0 0 0 3.5 15h9A1.5 1.5 0 0 0 14 13.5v-5A1.5 1.5 0 0 0 12.5 7H12V5a4 4 0 0 0-4-4zM6 5a2 2 0 1 1 4 0v2H6V5z"/>
-                </svg>
-            </span>
-            </div>
-
-
-            <button type="submit">Cadastrar</button>
-
             <p class="possuo-conta">Já possuo uma <span>conta</span></p>
         </div>
     </main>
@@ -83,6 +83,57 @@
         $(document).ready(function () {
             $('#footer-container').load('footer.html');
         });
+        
+        document.getElementById('formCadastro').addEventListener('submit', async function (event) {
+            event.preventDefault(); // Impede o reload da página
+
+            const nome = document.getElementById('username').value;
+            const email = document.getElementById('email').value;
+            const cpf = document.getElementById('cpf').value;
+            const senha = document.getElementById('senha').value;
+            const confirmar = document.getElementById('confirmar').value;
+
+            const msg = document.getElementById('mensagem');
+
+            if (senha !== confirmar) {
+            msg.innerText = 'As senhas não coincidem!';
+            msg.style.color = 'red';
+            return;
+            }
+
+            const usuario = {
+            nome: nome,
+            email: email,
+            cpf: cpf,
+            senha: senha
+            };
+
+            try {
+            const response = await fetch('http://localhost:3000/usuarios', {
+                method: 'POST',
+                headers: {
+                'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(usuario)
+            });
+
+            const resultado = await response.json();
+
+            if (!response.ok) {
+                msg.innerText = resultado.message || 'Erro ao cadastrar.';
+                msg.style.color = 'red';
+                return;
+            }
+
+            msg.innerText = 'Usuário cadastrado com sucesso!';
+            msg.style.color = 'green';
+            document.getElementById('formCadastro').reset();
+            } catch (erro) {
+            msg.innerText = 'Erro de conexão com o servidor.';
+            msg.style.color = 'red';
+            }
+        });
+
     </script>
 </html>
 
