@@ -5,6 +5,8 @@ import { CreateUsuarioDto } from './dto/create-usuario.dto';
 import { UpdateUsuarioDto } from './dto/update-usuario.dto';
 import { Usuario, UsuarioDocument } from './entities/usuario.entity';
 import { MongoServerError } from 'mongodb';
+import * as bcrypt from 'bcryptjs';
+
 
 @Injectable()
 export class UsuariosService {
@@ -13,7 +15,7 @@ export class UsuariosService {
     private usuarioModel: Model<UsuarioDocument>,
   ) {}
 
-  async create(createUsuarioDto: CreateUsuarioDto): Promise<Usuario> {
+ async create(createUsuarioDto: CreateUsuarioDto): Promise<Usuario> {
   // Checa se já existe um usuário com o mesmo nome
   const usuarioExistente = await this.usuarioModel.findOne({ nome: createUsuarioDto.nome });
 
@@ -21,19 +23,24 @@ export class UsuariosService {
     throw new Error('Usuário já existe');
   }
 
+  // Faz o hash da senha aqui
+  const hashedPassword = await bcrypt.hash(createUsuarioDto.senha, 10);
+
   try {
-    return await this.usuarioModel.create(createUsuarioDto);
+    // Cria o usuário com a senha criptografada
+    return await this.usuarioModel.create({
+      ...createUsuarioDto,
+      senha: hashedPassword,
+    });
   } catch (error) {
     if (error instanceof MongoServerError && error.code === 11000) {
       const campoDuplicado = Object.keys(error.keyPattern)[0];
 
-      // Mapa de nomes personalizados
       const nomesCampos: Record<string, string> = {
         email: 'E-mail',
         cpf: 'CPF',
         nome: 'Nome',
         username: 'Nome de usuário',
-        // adicione mais conforme seus campos únicos
       };
 
       const nomeAmigavel = nomesCampos[campoDuplicado] || campoDuplicado;
@@ -43,6 +50,9 @@ export class UsuariosService {
   }
 }
 
+ async findOneByUsername(nome: string) {
+  return this.usuarioModel.findOne({ nome }).exec();
+}
 
   findAll() {
     return this.usuarioModel.find().exec();
