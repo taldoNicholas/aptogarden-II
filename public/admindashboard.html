@@ -430,7 +430,7 @@
 
             try {
               const url = id ? `http://localhost:3000/produtos/${id}` : 'http://localhost:3000/produtos';
-              const method = id ? 'PUT' : 'POST';
+              const method = id ? 'PATCH' : 'POST';
               const res = await fetch(url, {
                 method,
                 headers: { 'Content-Type': 'application/json' },
@@ -494,7 +494,7 @@
 
             try {
               const url = id ? `http://localhost:3000/entregadores/${id}` : 'http://localhost:3000/entregadores';
-              const method = id ? 'PUT' : 'POST';
+              const method = id ? 'PATCH' : 'POST';
               const res = await fetch(url, {
                 method,
                 headers: { 'Content-Type': 'application/json' },
