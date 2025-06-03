@@ -10,7 +10,7 @@ export class AuthService {
     private jwtService: JwtService,
   ) {}
 
-  async login(nome: string, senha: string) {
+    async login(nome: string, senha: string) {
     const usuario = await this.usuariosService.findOneByUsername(nome);
     if (!usuario) {
       throw new UnauthorizedException('Usuário não encontrado');
@@ -24,6 +24,11 @@ export class AuthService {
     const payload = { nome: usuario.nome, sub: usuario._id };
     const accessToken = this.jwtService.sign(payload);
 
-    return { accessToken };
+    return {
+      accessToken,
+      role: usuario.role,
+      nome: usuario.nome,
+      email: usuario.email,
+    };
   }
 }

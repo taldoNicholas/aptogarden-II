@@ -8,11 +8,17 @@ export class Produto {
   @Prop({ required: true })
   nome: string;
 
-  @Prop()
-  descricao?: string;
+  @Prop({ required: true, unique: true })
+  codigo: string;
+
+  @Prop({ required: true })
+  tipo: string;
 
   @Prop({ required: true })
   preco: number;
+
+  @Prop({ required: true })
+  quantidade: number;
 
   @Prop({ default: true })
   ativo: boolean;

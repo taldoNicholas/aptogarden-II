@@ -1,192 +1,627 @@
 <!-- admin-dashboard.html -->
-<!DOCTYPE html>
+<!doctype html>
 <html lang="pt-br">
-<head>
-  <meta charset="UTF-8">
-  <title>Admin - AptoGarden</title>
-  <link rel="stylesheet" href="../css/stylesheet.css">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-</head>
-<body>
-  <div id="header-container"></div>
-  <main class="content">
-    <h2 class="section-title">Painel Administrativo</h2>
-    <br>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Admin - AptoGarden</title>
+    <link rel="stylesheet" href="../css/stylesheet.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  </head>
+  <body>
+    <div id="header-container"></div>
+    <main class="content">
+      <h2 class="section-title">Painel Administrativo</h2>
+      <br />
 
-    <div style="display: flex; justify-content: center; gap: 20px; margin-bottom: 30px;">
-      <button class="botaoVERMAIS" onclick="mostrarSecao('usuarios')">Gerenciar Usuários</button>
-      <button class="botaoVERMAIS" onclick="mostrarSecao('produtos')">Gerenciar Produtos</button>
-      <button class="botaoVERMAIS" onclick="mostrarSecao('entregadores')">Gerenciar Entregadores</button>
+      <div
+        style="
+          display: flex;
+          justify-content: center;
+          gap: 20px;
+          margin-bottom: 30px;
+        "
+      >
+        <button class="botaoVERMAIS" onclick="mostrarSecao('usuarios')">
+          Gerenciar Usuários
+        </button>
+        <button class="botaoVERMAIS" onclick="mostrarSecao('produtos')">
+          Gerenciar Produtos
+        </button>
+        <button class="botaoVERMAIS" onclick="mostrarSecao('entregadores')">
+          Gerenciar Entregadores
+        </button>
+      </div>
+
+      <section class="dashboard">
+        <div class="card">
+          <h3>Vendas do dia</h3>
+          <p class="valor">R$1836,75</p>
+          <p class="comparacao verde">
+            <i class="fas fa-arrow-up"></i> 10% vs. Ontem
+          </p>
+        </div>
+
+        <div class="card">
+          <h3 style="text-align: center">Gráfico de Vendas</h3>
+          <canvas id="graficoVendas" width="150" height="75"></canvas>
+        </div>
+
+        <div class="card">
+          <h3 style="text-align: center">Produtos Mais Vendidos</h3>
+          <ul class="mais-vendidos">
+            <li>
+              <img src="../img/iconAlfaceCrespa.png" alt="Alface" width="25%" />
+              Alface Crespa
+            </li>
+            <li>
+              <img
+                src="../img/iconCouveFlor.png"
+                alt="Couve-flor"
+                width="25%"
+              />
+              Couve-flor
+            </li>
+            <li>
+              <img src="../img/iconRuculaRokita.png" alt="Rúcula" width="25%" />
+              Rúcula Rokita
+            </li>
+          </ul>
+        </div>
+
+        <div class="card">
+          <h3 style="text-align: center">Meta</h3>
+          <progress value="65000" max="100000"></progress>
+          <p style="text-align: center; color: #477822">R$65k de R$100k</p>
+        </div>
+      </section>
+
+      <section id="usuarios-section">
+        <br /><br /><br />
+        <div class="section-title">Gerenciar Usuários</div>
+        <br /><br /><br />
+        <button id="btnAddUser" class="botaoVERMAIS">Adicionar Usuário</button>
+        <input type="text" id="searchUser" placeholder="Buscar..." />
+        <table class="tabela" id="usuariosTable">
+          <thead>
+            <tr>
+              <th>#</th>
+              <th>Nome</th>
+              <th>E-mail</th>
+              <th>Senha criptografada</th>
+              <th>CPF</th>
+              <th>Ações</th>
+            </tr>
+          </thead>
+          <tbody></tbody>
+        </table>
+      </section>
+
+      <section id="produtos-section" style="display: none">
+        <div class="section-title">Gerenciar Estoque</div>
+        <br /><br /><br />
+        <button id="btnAddProduto" class="botaoVERMAIS">
+          Adicionar Produto
+        </button>
+        <input type="text" id="searchProduto" placeholder="Buscar..." />
+        <table class="tabela" id="produtosTable">
+          <thead>
+            <tr>
+              <th>#</th>
+              <th>Nome</th>
+              <th>Código</th>
+              <th>Tipo</th>
+              <th>Preço</th>
+              <th>Quantidade</th>
+              <th>Ações</th>
+            </tr>
+          </thead>
+          <tbody></tbody>
+        </table>
+      </section>
+
+      <section id="entregadores-section" style="display: none">
+        <div class="section-title">Gerenciar Entregadores</div>
+        <br /><br /><br />
+        <button id="btnAddEntregador" class="botaoVERMAIS">
+          Adicionar Entregador
+        </button>
+        <input type="text" id="searchEntregador" placeholder="Buscar..." />
+        <table class="tabela" id="entregadoresTable">
+          <thead>
+            <tr>
+              <th>#</th>
+              <th>Nome</th>
+              <th>Placa</th>
+              <th>Celular</th>
+              <th>CPF</th>
+              <th>Moto</th>
+              <th>Ações</th>
+            </tr>
+          </thead>
+          <tbody></tbody>
+        </table>
+      </section>
+    </main>
+    <div id="footer-container"></div>
+
+    <div id="modalUsuario" class="modal" style="display: none">
+      <div class="modal-conteudo">
+        <h3>Usuário</h3>
+        <form id="userForm">
+          <input type="hidden" id="userId" />
+          <label>Nome:</label>
+          <input type="text" id="userNome" required />
+          <label>Email:</label>
+          <input type="email" id="userEmail" required />
+          <label>Senha:</label>
+          <input type="password" id="userSenha" required />
+          <label>CPF:</label>
+          <input type="text" id="userCpf" required />
+          <button type="submit">Salvar</button>
+          <button
+            type="button"
+            onclick="$('#modalUsuario').css('display', 'none')"
+          >
+            Cancelar
+          </button>
+        </form>
+      </div>
     </div>
 
-     <section class="dashboard">
-      <div class="card">
-        <h3>Vendas do dia</h3>
-        <p class="valor">R$1836,75</p>
-        <p class="comparacao verde"><i class="fas fa-arrow-up"></i> 10% vs. Ontem</p>
-      </div>
-
-      <div class="card">
-        <h3 style="text-align: center;">Gráfico de Vendas</h3>
-        <canvas id="graficoVendas" width="150" height="75"></canvas>
-      </div>
-
-      <div class="card">
-        <h3 style="text-align: center;">Produtos Mais Vendidos</h3>
-        <ul class="mais-vendidos">
-          <li><img src="../img/iconAlfaceCrespa.png" alt="Alface" width="25%"> Alface Crespa</li>
-          <li><img src="../img/iconCouveFlor.png" alt="Couve-flor" width="25%"> Couve-flor</li>
-          <li><img src="../img/iconRuculaRokita.png" alt="Rúcula" width="25%"> Rúcula Rokita</li>
-        </ul>
-      </div>
-
-      <div class="card">
-        <h3 style="text-align: center;">Meta</h3>
-        <progress value="65000" max="100000"></progress>
-        <p style="text-align: center; color: #477822;">R$65k de R$100k</p>
-      </div>
-    </section>
-
-    <section id="usuarios-section">
-      <br><br><br><div class="section-title">Gerenciar Usuários</div><br><br><br>
-      <button id="btnAddUser" class="botaoVERMAIS">Adicionar Usuário</button>
-      <input type="text" id="searchUser" placeholder="Buscar...">
-      <table class="tabela" id="usuariosTable">
-        <thead><tr><th>#</th><th>Nome</th><th>E-mail</th><th>Celular</th><th>CPF</th><th>Ações</th></tr></thead>
-        <tbody></tbody>
-      </table>
-    </section>
-
-    <section id="produtos-section" style="display:none">
-      <div class="section-title">Gerenciar Estoque</div><br><br><br>
-      <button id="btnAddProduto" class="botaoVERMAIS">Adicionar Produto</button>
-      <input type="text" id="searchProduto" placeholder="Buscar...">
-      <table class="tabela" id="produtosTable">
-        <thead><tr><th>#</th><th>Nome</th><th>Código</th><th>Tipo</th><th>Preço</th><th>Quantidade</th></tr></thead>
-        <tbody></tbody>
-      </table>
-    </section>
-
-    <section id="entregadores-section" style="display:none">
-      <div class="section-title">Gerenciar Entregadores</div><br><br><br>
-      <button id="btnAddEntregador" class="botaoVERMAIS">Adicionar Entregador</button>
-      <input type="text" id="searchEntregador" placeholder="Buscar...">
-      <table class="tabela" id="entregadoresTable">
-        <thead><tr><th>#</th><th>Nome</th><th>Placa</th><th>Celular</th><th>CPF</th><th>Moto</th></tr></thead>
-        <tbody></tbody>
-      </table>
-    </section>
-  </main>
-  <div id="footer-container"></div>
-
-  <div id="modalUsuario" class="modal" style="display:none">
-    <div class="modal-conteudo">
-      <h3>Usuário</h3>
-      <form id="userForm">
-        <input type="hidden" id="userId">
-        <label>Nome:</label>
-        <input type="text" id="userNome" required>
-        <label>Email:</label>
-        <input type="email" id="userEmail" required>
-        <label>Celular:</label>
-        <input type="text" id="userCelular" required>
-        <label>CPF:</label>
-        <input type="text" id="userCpf" required>
-        <button type="submit">Salvar</button>
-        <button type="button" onclick="$('#modalUsuario').hide()">Cancelar</button>
-      </form>
-    </div>
+    <div id="modalProduto" class="modal" style="display: none">
+  <div class="modal-conteudo">
+    <h3>Produto</h3>
+    <form id="produtoForm">
+      <input type="hidden" id="produtoId" />
+      <label>Nome:</label>
+      <input type="text" id="produtoNome" required />
+      <label>Código:</label>
+      <input type="text" id="produtoCodigo" required />
+      <label>Tipo:</label>
+      <input type="text" id="produtoTipo" required />
+      <label>Preço:</label>
+      <input type="number" step="0.01" id="produtoPreco" required />
+      <label>Quantidade:</label>
+      <input type="number" id="produtoQuantidade" required />
+      <button type="submit">Salvar</button>
+      <button type="button" onclick="$('#modalProduto').hide()">Cancelar</button>
+    </form>
   </div>
+</div>
 
-  <script>
-    $(document).ready(function () {
-      $('#header-container').load('header.html');
+<div id="modalEntregador" class="modal" style="display: none">
+  <div class="modal-conteudo">
+    <h3>Entregador</h3>
+    <form id="entregadorForm">
+      <input type="hidden" id="entregadorId" />
+      <label>Nome:</label>
+      <input type="text" id="entregadorNome" required />
+      <label>Celular:</label>
+      <input type="text" id="entregadorCelular" required />
+      <label>CPF:</label>
+      <input type="text" id="entregadorCpf" required />
+      <label>Placa:</label>
+      <input type="text" id="entregadorPlaca" required />
+      <label>Modelo da Moto:</label>
+      <input type="text" id="entregadorMoto" required />
+      <button type="submit">Salvar</button>
+      <button type="button" onclick="$('#modalEntregador').hide()">Cancelar</button>
+    </form>
+  </div>
+</div>
+
+
+
+    <script>
+          $(document).ready(function () {
+          $('#header-container').load('header.html', function () {
+            const role = localStorage.getItem('role');
+            const nome = localStorage.getItem('nome');
+
+            // Controle de exibição baseado no role
+            if (role !== 'admin') {
+              const btnEstoque = document.getElementById('btnEstoque');
+              if (btnEstoque) btnEstoque.style.display = 'none';
+
+              const btnAdmin = document.getElementById('btnAdmin');
+              if (btnAdmin) btnAdmin.style.display = 'none';
+            }
+
+            // Mostrar nome do usuário se estiver logado
+            if (nome) {
+              const loginLink = document.getElementById('loginLink');
+              const cadastroLink = document.getElementById('cadastroLink');
+              if (loginLink) loginLink.style.display = 'none';
+              if (cadastroLink) cadastroLink.style.display = 'none';
+
+              const userNameDisplay = document.getElementById('userNameDisplay');
+              if (userNameDisplay) {
+                userNameDisplay.style.display = 'block';
+                const userNameText = document.getElementById('userNameText');
+                if (userNameText) userNameText.textContent = `Olá, ${nome}`;
+              }
+            }
+          });
+
       $('#footer-container').load('footer.html');
-    });
 
-    function mostrarSecao(secao) {
-      $('#usuarios-section').hide();
-      $('#produtos-section').hide();
-      $('#entregadores-section').hide();
-      $(`#${secao}-section`).show();
-    }
+            carregarProdutos(); // Carrega produtos ao iniciar a página
+            carregarEntregadores(); // Carrega entregadores ao iniciar a página
+            carregarUsuarios(); // Carrega usuários ao iniciar a página
+          });
 
-    const ctx = document.getElementById('graficoVendas');
-    new Chart(ctx, {
-      type: 'line',
-      data: {
-        labels: ['Seg', 'Ter', 'Qua', 'Qui', 'Sex', 'Sab', 'Dom'],
-        datasets: [{
-          label: 'Vendas',
-          data: [1200, 1500, 1100, 1700, 1836, 1400, 1600],
-          borderColor: 'green',
-          fill: false
-        }]
-      }
-    });
+          function mostrarSecao(secao) {
+            $('#usuarios-section').hide();
+            $('#produtos-section').hide();
+            $('#entregadores-section').hide();
+            $(`#${secao}-section`).show();
+          }
 
-    let usuarios = [];
+          const ctx = document.getElementById('graficoVendas');
+          new Chart(ctx, {
+            type: 'line',
+            data: {
+              labels: ['Seg', 'Ter', 'Qua', 'Qui', 'Sex', 'Sab', 'Dom'],
+              datasets: [
+                {
+                  label: 'Vendas',
+                  data: [1200, 1500, 1100, 1700, 1836, 1400, 1600],
+                  borderColor: 'green',
+                  fill: false,
+                },
+              ],
+            },
+          });
 
-    function renderUsuarios() {
-      const tbody = $('#usuariosTable tbody');
-      tbody.empty();
-      usuarios.forEach((u, i) => {
-        tbody.append(`<tr>
-          <td>${i+1}</td>
-          <td>${u.nome}</td>
-          <td>${u.email}</td>
-          <td>${u.celular}</td>
-          <td>${u.cpf}</td>
-          <td>
-            <i class="fas fa-edit" onclick="editarUsuario(${i})"></i>
-            <i class="fas fa-trash" onclick="excluirUsuario(${i})"></i>
-          </td>
-        </tr>`);
-      });
-    }
+          let usuarios = [];
 
-    $('#btnAddUser').click(() => {
-      $('#userForm')[0].reset();
-      $('#userId').val('');
-      $('#modalUsuario').show();
-    });
+          // Função para buscar a lista de usuários no backend
+          async function carregarUsuarios() {
+            try {
+              const res = await fetch('http://localhost:3000/usuarios');
+              if (!res.ok) throw new Error('Erro ao buscar usuários');
+              usuarios = await res.json();
+              renderUsuarios();
+            } catch (error) {
+              alert('Erro ao carregar usuários: ' + error.message);
+            }
+          }
 
-    $('#userForm').submit(function(e) {
-      e.preventDefault();
-      const id = $('#userId').val();
-      const usuario = {
-        nome: $('#userNome').val(),
-        email: $('#userEmail').val(),
-        celular: $('#userCelular').val(),
-        cpf: $('#userCpf').val()
-      };
-      if (id === '') {
-        usuarios.push(usuario);
-      } else {
-        usuarios[parseInt(id)] = usuario;
-      }
-      $('#modalUsuario').hide();
-      renderUsuarios();
-    });
+          // Função para renderizar os usuários na tabela
+          function renderUsuarios() {
+            const tbody = $('#usuariosTable tbody');
+            tbody.empty();
+            usuarios.forEach((u, i) => {
+              tbody.append(`<tr>
+                  <td>${i + 1}</td>
+                  <td>${u.nome}</td>
+                  <td>${u.email}</td>
+                  <td>${u.senha}</td>
+                  <td>${u.cpf}</td>
+                  <td>
+                    <i class="fas fa-edit" onclick="editarUsuario('${u._id}')" style="cursor:pointer;"></i>
+                    <i class="fas fa-trash" onclick="excluirUsuario(${i})" style="cursor:pointer; margin-left:10px;"></i>
+                  </td>
+                </tr>`);
+            });
+          }
+          // btn do modal de produto
+          $('#btnAddProduto').click(() => {
+          $('#produtoForm')[0].reset();
+          $('#produtoId').val('');
+          $('#modalProduto').css('display', 'flex');
+          });
 
-    function editarUsuario(i) {
-      const u = usuarios[i];
-      $('#userId').val(i);
-      $('#userNome').val(u.nome);
-      $('#userEmail').val(u.email);
-      $('#userCelular').val(u.celular);
-      $('#userCpf').val(u.cpf);
-      $('#modalUsuario').show();
-    }
+          //btn do modal dos entregadores
+          $('#btnAddEntregador').click(() => {
+          $('#entregadorForm')[0].reset();
+          $('#entregadorId').val('');
+          $('#modalEntregador').css('display', 'flex');
+          });
 
-    function excluirUsuario(i) {
-      if (confirm('Deseja excluir este usuário?')) {
-        usuarios.splice(i, 1);
-        renderUsuarios();
-      }
-    }
-  </script>
-</body>
+
+          // Abre modal para adicionar usuário
+          $('#btnAddUser').click(() => {
+            $('#userForm')[0].reset();
+            $('#userId').val('');
+            $('#modalUsuario').css('display', 'flex');
+          });
+
+          // Salva usuário (cria ou atualiza) via API
+          $('#userForm').submit(async function (e) {
+            e.preventDefault();
+            const id = $('#userId').val();
+            const usuario = {
+              nome: $('#userNome').val(),
+              email: $('#userEmail').val(),
+              senha: $('#userSenha').val(),
+              cpf: $('#userCpf').val(),
+            };
+
+            try {
+              if (id === '') {
+                // Criar novo usuário (POST)
+                const res = await fetch('http://localhost:3000/usuarios', {
+                  method: 'POST',
+                  headers: { 'Content-Type': 'application/json' },
+                  body: JSON.stringify(usuario),
+                });
+                if (!res.ok) throw new Error('Erro ao criar usuário');
+              } else {
+                // Atualizar usuário existente (PUT)
+                const res = await fetch(`http://localhost:3000/usuarios/${id}`, {
+                  method: 'PUT',
+                  headers: { 'Content-Type': 'application/json' },
+                  body: JSON.stringify(usuario),
+                });
+                if (!res.ok) throw new Error('Erro ao atualizar usuário');
+              }
+              await carregarUsuarios();
+              $('#modalUsuario').css('display', 'none');
+            } catch (error) {
+              alert(error.message);
+            }
+          });
+
+          // Função para abrir modal de edição preenchendo os dados do usuário
+         function editarUsuario(id) {
+          const u = usuarios.find(user => user._id === id);
+          if (!u) return alert('Usuário não encontrado');
+          $('#userId').val(u._id);
+          $('#userNome').val(u.nome);
+          $('#userEmail').val(u.email);
+          $('#userSenha').val(u.senha);
+          $('#userCpf').val(u.cpf);
+          $('#modalUsuario').css('display', 'flex');
+          }
+
+
+          // Função para excluir usuário via API
+          async function excluirUsuario(i) {
+            if (confirm('Deseja excluir este usuário?')) {
+              const id = usuarios[i]._id;
+              try {
+                const res = await fetch(`http://localhost:3000/usuarios/${id}`, {
+                  method: 'DELETE',
+                });
+                if (!res.ok) throw new Error('Erro ao excluir usuário');
+                await carregarUsuarios();
+              } catch (error) {
+                alert(error.message);
+              }
+            }
+          }
+
+          // Fecha modal ao clicar fora da área branca
+          $('#modalUsuario').click(function (e) {
+            if (e.target === this) {
+              $(this).css('display', 'none');
+            }
+          });
+
+          // Filtro de busca na tabela de usuários
+                $('#searchUser').on('input', function () {
+                  const termo = $(this).val().toLowerCase();
+                  $('#usuariosTable tbody tr').each(function () {
+                    const linha = $(this);
+                    const textoLinha = linha.text().toLowerCase();
+                    linha.toggle(textoLinha.includes(termo));
+                  });
+                });
+
+
+          //albano mexendo/produtos
+
+          $('#produtoForm').submit(async function (e) {
+            e.preventDefault();
+            const id = $('#produtoId').val();
+            const produto = {
+              nome: $('#produtoNome').val(),
+              codigo: $('#produtoCodigo').val(),
+              tipo: $('#produtoTipo').val(),
+              preco: parseFloat($('#produtoPreco').val()),
+              quantidade: parseInt($('#produtoQuantidade').val())
+            };
+
+            try {
+              const url = id ? `http://localhost:3000/produtos/${id}` : 'http://localhost:3000/produtos';
+              const method = id ? 'PUT' : 'POST';
+              const res = await fetch(url, {
+                method,
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(produto)
+              });
+              if (!res.ok) throw new Error('Erro ao salvar produto');
+              await carregarProdutos();
+              $('#modalProduto').hide();
+            } catch (error) {
+              alert(error.message);
+            }
+          });
+
+          async function carregarProdutos() {
+            try {
+              const res = await fetch('http://localhost:3000/produtos');
+              const produtos = await res.json();
+              const tbody = $('#produtosTable tbody');
+              tbody.empty();
+              produtos.forEach((p, i) => {
+                tbody.append(`<tr>
+                  <td>${i + 1}</td>
+                  <td>${p.nome}</td>
+                  <td>${p.codigo}</td>
+                  <td>${p.tipo}</td>
+                  <td>${p.preco.toFixed(2)}</td>
+                  <td>${p.quantidade}</td>
+                  <td>
+                    <i class="fas fa-edit" onclick="editarProduto('${p._id}')" style="cursor:pointer;"></i>
+                    <i class="fas fa-trash" onclick="excluirProduto(${i})" style="cursor:pointer; margin-left:10px;"></i>
+                  </td>
+                </tr>`);
+              });
+            } catch (error) {
+              alert('Erro ao carregar produtos: ' + error.message);
+            }
+          }
+          // Filtro de busca na tabela de produtos
+          $('#searchProduto').on('input', function () {
+            const termo = $(this).val().toLowerCase();
+            $('#produtosTable tbody tr').each(function () {
+              const linha = $(this);
+              const textoLinha = linha.text().toLowerCase();
+              linha.toggle(textoLinha.includes(termo));
+            });
+          });
+
+
+
+          //entregadores
+          $('#entregadorForm').submit(async function (e) {
+            e.preventDefault();
+            const id = $('#entregadorId').val();
+            const entregador = {
+              nome: $('#entregadorNome').val(),
+              celular: $('#entregadorCelular').val(),
+              cpf: $('#entregadorCpf').val(),
+              placa: $('#entregadorPlaca').val(),
+              modelo: $('#entregadorMoto').val()
+            };
+
+            try {
+              const url = id ? `http://localhost:3000/entregadores/${id}` : 'http://localhost:3000/entregadores';
+              const method = id ? 'PUT' : 'POST';
+              const res = await fetch(url, {
+                method,
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(entregador)
+              });
+              if (!res.ok) throw new Error('Erro ao salvar entregador');
+              await carregarEntregadores();
+              $('#modalEntregador').hide();
+            } catch (error) {
+              alert(error.message);
+            }
+          });
+
+          async function carregarEntregadores() {
+            try {
+              const res = await fetch('http://localhost:3000/entregadores');
+              const entregadores = await res.json();
+              const tbody = $('#entregadoresTable tbody');
+              tbody.empty();
+              entregadores.forEach((e, i) => {
+                tbody.append(`<tr>
+                  <td>${i + 1}</td>
+                  <td>${e.nome}</td>
+                  <td>${e.placa}</td>
+                  <td>${e.celular}</td>
+                  <td>${e.cpf}</td>
+                  <td>${e.modelo}</td>
+                  <td>
+                    <i class="fas fa-edit" onclick="editarEntregador('${e._id}')" style="cursor:pointer;"></i>
+                    <i class="fas fa-trash" onclick="excluirEntregador(${i})" style="cursor:pointer; margin-left:10px;"></i>
+                  </td>
+                </tr>`);
+              });
+            } catch (error) {
+              alert('Erro ao carregar entregadores: ' + error.message);
+            }
+          }
+
+          $('#searchEntregador').on('input', function () {
+          const termo = $(this).val().toLowerCase();
+          $('#entregadoresTable tbody tr').each(function () {
+            const linha = $(this);
+            const textoLinha = linha.text().toLowerCase();
+            linha.toggle(textoLinha.includes(termo));
+          });
+        });
+          
+          function editarEntregador(id) {
+            fetch(`http://localhost:3000/entregadores/${id}`)
+              .then(res => {
+                if (!res.ok) throw new Error('Erro ao buscar entregador');
+                return res.json();
+              })
+              .then(entregador => {
+                $('#entregadorId').val(entregador._id);
+                $('#entregadorNome').val(entregador.nome);
+                $('#entregadorCelular').val(entregador.celular);
+                $('#entregadorCpf').val(entregador.cpf);
+                $('#entregadorPlaca').val(entregador.placa);
+                $('#entregadorMoto').val(entregador.modelo);
+                $('#modalEntregador').css('display', 'flex');
+              })
+              .catch(error => {
+                alert(error.message);
+              });
+          }
+
+          async function excluirEntregador(index) {
+            try {
+              const resLista = await fetch('http://localhost:3000/entregadores');
+              const entregadores = await resLista.json();
+              const id = entregadores[index]._id;
+
+              if (confirm('Deseja excluir este entregador?')) {
+                const res = await fetch(`http://localhost:3000/entregadores/${id}`, {
+                  method: 'DELETE'
+                });
+                if (!res.ok) throw new Error('Erro ao excluir entregador');
+                await carregarEntregadores();
+              }
+            } catch (error) {
+              alert(error.message);
+            }
+          }
+
+
+          function editarProduto(id) {
+              fetch(`http://localhost:3000/produtos/${id}`)
+                .then(res => {
+                  if (!res.ok) throw new Error('Erro ao buscar produto');
+                  return res.json();
+                })
+                .then(produto => {
+                  $('#produtoId').val(produto._id);
+                  $('#produtoNome').val(produto.nome);
+                  $('#produtoCodigo').val(produto.codigo);
+                  $('#produtoTipo').val(produto.tipo);
+                  $('#produtoPreco').val(produto.preco);
+                  $('#produtoQuantidade').val(produto.quantidade);
+                  $('#modalProduto').css('display', 'flex');
+                })
+                .catch(error => {
+                  alert(error.message);
+                });
+            }
+
+
+          async function excluirProduto(index) {
+              try {
+                const resLista = await fetch('http://localhost:3000/produtos');
+                const produtos = await resLista.json();
+                const id = produtos[index]._id;
+
+                if (confirm('Deseja excluir este produto?')) {
+                  const res = await fetch(`http://localhost:3000/produtos/${id}`, {
+                    method: 'DELETE'
+                  });
+                  if (!res.ok) throw new Error('Erro ao excluir produto');
+                  await carregarProdutos();
+                }
+              } catch (error) {
+                alert(error.message);
+              }
+            }
+
+
+        </script>
+
+  </body>
 </html>

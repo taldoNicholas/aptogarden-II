@@ -42,7 +42,7 @@
             </a>
             <ul class="dropdown-menu">
               <li><a class="dropdown-item" href="../delivery.html"><img src="../img/iconEntrega.png" style="width:10%;height:25%;margin-right:5%" href="../delivery.html">Delivery</a></li>
-              <li><a class="dropdown-item" href="../controleestoque.html"><img src="../img/iconEstoque.png" style="width:10%;height:25%;margin-right:5%" href="../controleestoque.html">Controle de estoque</a></li>
+              <li id="btnEstoque"><a class="dropdown-item" href="../controleestoque.html"><img src="../img/iconEstoque.png" style="width:10%;height:25%;margin-right:5%" href="../controleestoque.html">Controle de estoque</a></li>
             </ul>
           </li>
           <li class="nav-item">
@@ -54,19 +54,79 @@
             </a>
             <ul class="dropdown-menu">
               <li><a class="dropdown-item" href="../perfilCliente.html"><img src="../img/iconCliente.png" style="width:10%;height:25%;margin-right:5%" href="../perfilCliente.html">Perfil Cliente</a></li>
-              <li><a class="dropdown-item" href="../perfilAdministrador.html"><img src="../img/iconeAdmin.png" style="width:10%;height:25%;margin-right:5%" href="../perfilAdministrador.html">Perfil Admin</a></li>
+              <li id="btnAdmin"><a class="dropdown-item" href="../perfilAdministrador.html"><img src="../img/iconeAdmin.png" style="width:10%;height:25%;margin-right:5%" href="../perfilAdministrador.html">Perfil Admin</a></li>
             </ul>
           </li>
-          <li class="nav-item">
+          <li class="nav-item" id="loginLink">
             <a class="nav-link" href="../login.html"><img src="../img/iconLogin.png" style="width:20%;height:25%;margin-right:5%">Login</a> 
           </li>
           <li class="nav-item">
             <a class="nav-link">/</a>
           </li>
-          <li class="nav-item">
+          <li class="nav-item" id="cadastroLink">
             <a class="nav-link" href="../cadastro.html"><img src="../img/iconCadastrar.png" style="width:20%;height:25%;margin-right:5%">Cadastro</a>
           </li>
-        </ul>
-      </div>
-    </div>
-  </nav>
+          <!-- Itens visíveis quando logado -->
+          <li class="nav-item" id="userNameDisplay" style="display:none;">
+            <a class="nav-link" href="#">
+              <img src="../img/iconPerfil.png" style="width:20%;height:25%;margin-right:5%">
+              <span id="userNameText"></span>
+            </a>
+          </li>
+          <li class="nav-item" id="logoutLink" style="display:none;">
+            <a class="nav-link" href="#" id="btnLogout">
+              <img src="../img/iconLogout.png" style="width:20%;height:25%;margin-right:5%">Logout
+            </a>
+          </li>
+    </ul>
+  </div>
+</nav>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const role = localStorage.getItem('role');
+    const nome = localStorage.getItem('nome');
+
+    // Controle itens admin / não admin
+    if (role !== 'admin') {
+      const btnEstoque = document.getElementById('btnEstoque');
+      if (btnEstoque) btnEstoque.style.display = 'none';
+
+      const btnAdmin = document.getElementById('btnAdmin');
+      if (btnAdmin) btnAdmin.style.display = 'none';
+    }
+
+    // Se está logado: esconde login/cadastro, mostra nome e logout
+    if (nome) {
+      // Esconde login e cadastro
+      const loginLink = document.getElementById('loginLink');
+      const cadastroLink = document.getElementById('cadastroLink');
+      if (loginLink) loginLink.style.display = 'none';
+      if (cadastroLink) cadastroLink.style.display = 'none';
+
+      // Mostra nome do usuário
+      const userNameDisplay = document.getElementById('userNameDisplay');
+      if (userNameDisplay) {
+        userNameDisplay.style.display = 'block';
+        const userNameText = document.getElementById('userNameText');
+        if (userNameText) userNameText.textContent = `Olá, ${nome}`;
+      }
+
+      // Mostra logout
+      const logoutLink = document.getElementById('logoutLink');
+      if (logoutLink) logoutLink.style.display = 'block';
+
+      // Evento logout
+      const btnLogout = document.getElementById('btnLogout');
+      if (btnLogout) {
+        btnLogout.addEventListener('click', (e) => {
+          e.preventDefault();
+          // Limpa localStorage
+          localStorage.clear();
+          // Redireciona para login
+          window.location.href = '../login.html';
+        });
+      }
+    }
+  });
+</script>
