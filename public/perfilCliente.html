@@ -18,8 +18,8 @@
         <div id="perfil" style="display: flex; align-items: center; gap: 20px;">
             <img src="../img/fotoCliente.png" style="width: 100px; height: 100px; border-radius: 50%;" alt="Foto do cliente">
             <div id="emailenome" style="display: flex; flex-direction: column; text-align: left;">
-                <h2 style="margin: 0; font-weight: bold;">Fulano Ciclano Da Silva</h2>
-                <h2 style="margin: 0; font-size: 90%; font-style: italic;">fulanociclanodasilva@dominio.com</h2>
+                <h2 id="perfilNome" style="margin: 0; font-weight: bold;"></h2>
+                <h2 id="perfilEmail" style="margin: 0; font-size: 90%; font-style: italic;"></h2>
             </div>
         </div>
     
@@ -64,6 +64,7 @@
                     <a href="seguranca_Cliente.html"><img src="../img/iconeSetaAbrir.png" style="width: 5%; position: absolute; right: 10px; top: 50%; transform: translateY(-50%);"></a>
                 </div>
             </div>
+            <button id="logoutBtn">Sair</button>
             <h1 style="color:black;font-size: 95%;margin-right: -8%;">Você pode <a text-decoration: none, style="color:#477822;font-weight: bold;">cancelar a sua conta</a> quando quiser.</h1>
         </div>  
     </div>   
@@ -72,12 +73,55 @@
 <div id="footer-container"></div>
 
 </body>
-    <script>
-        $(document).ready(function () {
-            $('#header-container').load('header.html');
+   <script>
+  $(document).ready(function () {
+    $('#header-container').load('header.html', function () {
+      const role = localStorage.getItem('role');
+      const nome = localStorage.getItem('nome');
+      const email = localStorage.getItem('email');
+
+        // Atualiza nome e email no perfil da página
+        if (nome) $('#perfilNome').text(nome);
+        if (email) $('#perfilEmail').text(email);
+
+      // Controle de exibição baseado no role
+      if (role !== 'admin') {
+        const btnEstoque = document.getElementById('btnEstoque');
+        if (btnEstoque) btnEstoque.style.display = 'none';
+
+        const btnAdmin = document.getElementById('btnAdmin');
+        if (btnAdmin) btnAdmin.style.display = 'none';
+      }
+
+      // Mostrar nome do usuário se estiver logado
+      if (nome) {
+        const loginLink = document.getElementById('loginLink');
+        const cadastroLink = document.getElementById('cadastroLink');
+        if (loginLink) loginLink.style.display = 'none';
+        if (cadastroLink) cadastroLink.style.display = 'none';
+
+        const userNameDisplay = document.getElementById('userNameDisplay');
+        if (userNameDisplay) {
+          userNameDisplay.style.display = 'block';
+          const userNameText = document.getElementById('userNameText');
+          if (userNameText) userNameText.textContent = `Olá, ${nome}`;
+        }
+      }
+
+      // ✅ Botão de logout
+      const logoutBtn = document.getElementById('logoutBtn');
+      if (logoutBtn) {
+        logoutBtn.addEventListener('click', () => {
+          localStorage.removeItem('token');
+          localStorage.removeItem('nome');
+          localStorage.removeItem('role');
+          localStorage.removeItem('email');
+          window.location.href = '/login.html';
         });
-        $(document).ready(function () {
-            $('#footer-container').load('footer.html');
-        });
-    </script>
+      }
+    });
+
+    $('#footer-container').load('footer.html');
+  });
+</script>
 </html>

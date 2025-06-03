@@ -58,12 +58,38 @@
 
 </body>
     <script>
-        $(document).ready(function () {
-            $('#header-container').load('header.html');
-        });
-        $(document).ready(function () {
-            $('#footer-container').load('footer.html');
-        });
-    </script>
+    $(document).ready(function () {
+      $('#header-container').load('header.html', function () {
+        const role = localStorage.getItem('role');
+        const nome = localStorage.getItem('nome');
+
+        // Controle de exibição baseado no role
+        if (role !== 'admin') {
+          const btnEstoque = document.getElementById('btnEstoque');
+          if (btnEstoque) btnEstoque.style.display = 'none';
+
+          const btnAdmin = document.getElementById('btnAdmin');
+          if (btnAdmin) btnAdmin.style.display = 'none';
+        }
+
+        // Mostrar nome do usuário se estiver logado
+        if (nome) {
+          const loginLink = document.getElementById('loginLink');
+          const cadastroLink = document.getElementById('cadastroLink');
+          if (loginLink) loginLink.style.display = 'none';
+          if (cadastroLink) cadastroLink.style.display = 'none';
+
+          const userNameDisplay = document.getElementById('userNameDisplay');
+          if (userNameDisplay) {
+            userNameDisplay.style.display = 'block';
+            const userNameText = document.getElementById('userNameText');
+            if (userNameText) userNameText.textContent = `Olá, ${nome}`;
+          }
+        }
+      });
+
+      $('#footer-container').load('footer.html');
+    });
+</script>
 </html>
 

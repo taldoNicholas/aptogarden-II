@@ -70,9 +70,14 @@
         });
 
         const data = await response.json();
+        console.log("Nome encontrado no localStorage:", nome);
 
         if (response.ok) {
           localStorage.setItem('token', data.accessToken);
+          localStorage.setItem('role', data.role);
+          localStorage.setItem('nome', data.nome);
+          localStorage.setItem('email', data.email);
+
           alert('Login realizado com sucesso!');
           window.location.href = '/index.html';
         } else {
@@ -85,8 +90,18 @@
   </script>
 </body>
     <script>
-        $(document).ready(function () {
-            $('#header-container').load('header.html');
+       $(document).ready(function () {
+            $('#header-container').load('header.html', function () {
+            const role = localStorage.getItem('role');
+
+            if (role !== 'admin') {
+                const btnEstoque = document.getElementById('btnEstoque');
+                if (btnEstoque) btnEstoque.style.display = 'none';
+
+                const btnAdmin = document.getElementById('btnAdmin');
+                if (btnAdmin) btnAdmin.style.display = 'none';
+            }
+            });
         });
         $(document).ready(function () {
             $('#footer-container').load('footer.html');

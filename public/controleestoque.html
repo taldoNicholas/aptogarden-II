@@ -24,8 +24,8 @@
                     </div>
                     <div id="quantidades" style="margin-top: 10px; text-align: left;">
                         <div style="display: flex; justify-content: space-between; margin-bottom: 5px;">
-                            <h2 style="margin: 0;">Quantidade:</h2>
-                            <h2 style="margin: 0; color: green;">321</h2>
+                            <h2 style="margin: 0;" class="label">Quantidade:</h2>
+                            <h2 style="margin: 0; color: green;" class="quantidade"></h2>
                         </div>
                         <div style="display: flex; justify-content: space-between; margin-bottom: 5px;">
                             <h2 style="margin: 0;">Vendidos:</h2>
@@ -48,7 +48,7 @@
                     <div id="quantidades" style="margin-top: 10px; text-align: left;">
                         <div style="display: flex; justify-content: space-between; margin-bottom: 5px;">
                             <h2 style="margin: 0;">Quantidade:</h2>
-                            <h2 style="margin: 0; color: green;">189</h2>
+                            <h2 style="margin: 0; color: green;" class="quantidade"></h2>
                         </div>
                         <div style="display: flex; justify-content: space-between; margin-bottom: 5px;">
                             <h2 style="margin: 0;">Vendidos:</h2>
@@ -71,7 +71,7 @@
                     <div id="quantidades" style="margin-top: 10px; text-align: left;">
                         <div style="display: flex; justify-content: space-between; margin-bottom: 5px;">
                             <h2 style="margin: 0;">Quantidade:</h2>
-                            <h2 style="margin: 0; color: green;">189</h2>
+                            <h2 style="margin: 0; color: green;" class="quantidade"></h2>
                         </div>
                         <div style="display: flex; justify-content: space-between; margin-bottom: 5px;">
                             <h2 style="margin: 0;">Vendidos:</h2>
@@ -218,11 +218,54 @@
 
 </body>
     <script>
-        $(document).ready(function () {
-            $('#header-container').load('header.html');
+    $(document).ready(function () {
+      $('#header-container').load('header.html', function () {
+        const role = localStorage.getItem('role');
+        const nome = localStorage.getItem('nome');
+
+        // Controle de exibição baseado no role
+        if (role !== 'admin') {
+          const btnEstoque = document.getElementById('btnEstoque');
+          if (btnEstoque) btnEstoque.style.display = 'none';
+
+          const btnAdmin = document.getElementById('btnAdmin');
+          if (btnAdmin) btnAdmin.style.display = 'none';
+        }
+
+        // Mostrar nome do usuário se estiver logado
+        if (nome) {
+          const loginLink = document.getElementById('loginLink');
+          const cadastroLink = document.getElementById('cadastroLink');
+          if (loginLink) loginLink.style.display = 'none';
+          if (cadastroLink) cadastroLink.style.display = 'none';
+
+          const userNameDisplay = document.getElementById('userNameDisplay');
+          if (userNameDisplay) {
+            userNameDisplay.style.display = 'block';
+            const userNameText = document.getElementById('userNameText');
+            if (userNameText) userNameText.textContent = `Olá, ${nome}`;
+          }
+        }
+      });
+
+      $('#footer-container').load('footer.html');
+
+      $.get('http://localhost:3000/produtos', function(produtos) {
+        produtos.forEach(function(produto) {
+            const nome = produto.nome;
+            const quantidade = produto.quantidade;
+
+            // Localize o item na página pelo nome
+            $('.item').each(function () {
+            const titulo = $(this).find('h1').first().text().trim();
+            if (titulo === nome) {
+                $(this).find('#quantidades h2').first().text(`Quantidade:`); // Garantir consistência
+                $(this).find('#quantidades h2').eq(1).text(quantidade);
+            }
+            });
         });
-        $(document).ready(function () {
-            $('#footer-container').load('footer.html');
         });
-    </script>
+
+    });
+</script>
 </html>
