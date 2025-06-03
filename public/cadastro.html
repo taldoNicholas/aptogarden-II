@@ -138,6 +138,9 @@
             msg.innerText = 'Usuário cadastrado com sucesso!';
             msg.style.color = 'green';
             document.getElementById('formCadastro').reset();
+            setTimeout(() => {
+              window.location.href = '/login.html';
+                  }, 1000);
             } catch (erro) {
             msg.innerText = 'Erro de conexão com o servidor.';
             msg.style.color = 'red';
