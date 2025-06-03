@@ -64,6 +64,7 @@
                     <a href="seguranca_Cliente.html"><img src="../img/iconeSetaAbrir.png" style="width: 5%; position: absolute; right: 10px; top: 50%; transform: translateY(-50%);"></a>
                 </div>
             </div>
+            <button id="logoutBtn">Sair</button>
             <h1 style="color:black;font-size: 95%;margin-right: -8%;">Você pode <a text-decoration: none, style="color:#477822;font-weight: bold;">cancelar a sua conta</a> quando quiser.</h1>
         </div>  
     </div>   
@@ -72,38 +73,50 @@
 <div id="footer-container"></div>
 
 </body>
-    <script>
-    $(document).ready(function () {
-      $('#header-container').load('header.html', function () {
-        const role = localStorage.getItem('role');
-        const nome = localStorage.getItem('nome');
+   <script>
+  $(document).ready(function () {
+    $('#header-container').load('header.html', function () {
+      const role = localStorage.getItem('role');
+      const nome = localStorage.getItem('nome');
 
-        // Controle de exibição baseado no role
-        if (role !== 'admin') {
-          const btnEstoque = document.getElementById('btnEstoque');
-          if (btnEstoque) btnEstoque.style.display = 'none';
+      // Controle de exibição baseado no role
+      if (role !== 'admin') {
+        const btnEstoque = document.getElementById('btnEstoque');
+        if (btnEstoque) btnEstoque.style.display = 'none';
 
-          const btnAdmin = document.getElementById('btnAdmin');
-          if (btnAdmin) btnAdmin.style.display = 'none';
+        const btnAdmin = document.getElementById('btnAdmin');
+        if (btnAdmin) btnAdmin.style.display = 'none';
+      }
+
+      // Mostrar nome do usuário se estiver logado
+      if (nome) {
+        const loginLink = document.getElementById('loginLink');
+        const cadastroLink = document.getElementById('cadastroLink');
+        if (loginLink) loginLink.style.display = 'none';
+        if (cadastroLink) cadastroLink.style.display = 'none';
+
+        const userNameDisplay = document.getElementById('userNameDisplay');
+        if (userNameDisplay) {
+          userNameDisplay.style.display = 'block';
+          const userNameText = document.getElementById('userNameText');
+          if (userNameText) userNameText.textContent = `Olá, ${nome}`;
         }
+      }
 
-        // Mostrar nome do usuário se estiver logado
-        if (nome) {
-          const loginLink = document.getElementById('loginLink');
-          const cadastroLink = document.getElementById('cadastroLink');
-          if (loginLink) loginLink.style.display = 'none';
-          if (cadastroLink) cadastroLink.style.display = 'none';
-
-          const userNameDisplay = document.getElementById('userNameDisplay');
-          if (userNameDisplay) {
-            userNameDisplay.style.display = 'block';
-            const userNameText = document.getElementById('userNameText');
-            if (userNameText) userNameText.textContent = `Olá, ${nome}`;
-          }
-        }
-      });
-
-      $('#footer-container').load('footer.html');
+      // ✅ Botão de logout
+      const logoutBtn = document.getElementById('logoutBtn');
+      if (logoutBtn) {
+        logoutBtn.addEventListener('click', () => {
+          localStorage.removeItem('token');
+          localStorage.removeItem('nome');
+          localStorage.removeItem('role');
+          localStorage.removeItem('email');
+          window.location.href = '/login.html';
+        });
+      }
     });
+
+    $('#footer-container').load('footer.html');
+  });
 </script>
 </html>

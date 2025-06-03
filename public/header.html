@@ -73,11 +73,6 @@
               <span id="userNameText"></span>
             </a>
           </li>
-          <li class="nav-item" id="logoutLink" style="display:none;">
-            <a class="nav-link" href="#" id="btnLogout">
-              <img src="../img/iconLogout.png" style="width:20%;height:25%;margin-right:5%">Logout
-            </a>
-          </li>
     </ul>
   </div>
 </nav>
@@ -111,22 +106,6 @@
         const userNameText = document.getElementById('userNameText');
         if (userNameText) userNameText.textContent = `Olá, ${nome}`;
       }
-
-      // Mostra logout
-      const logoutLink = document.getElementById('logoutLink');
-      if (logoutLink) logoutLink.style.display = 'block';
-
-      // Evento logout
-      const btnLogout = document.getElementById('btnLogout');
-      if (btnLogout) {
-        btnLogout.addEventListener('click', (e) => {
-          e.preventDefault();
-          // Limpa localStorage
-          localStorage.clear();
-          // Redireciona para login
-          window.location.href = '../login.html';
-        });
       }
-    }
   });
 </script>
