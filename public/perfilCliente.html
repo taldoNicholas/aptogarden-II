@@ -18,8 +18,8 @@
         <div id="perfil" style="display: flex; align-items: center; gap: 20px;">
             <img src="../img/fotoCliente.png" style="width: 100px; height: 100px; border-radius: 50%;" alt="Foto do cliente">
             <div id="emailenome" style="display: flex; flex-direction: column; text-align: left;">
-                <h2 style="margin: 0; font-weight: bold;">Fulano Ciclano Da Silva</h2>
-                <h2 style="margin: 0; font-size: 90%; font-style: italic;">fulanociclanodasilva@dominio.com</h2>
+                <h2 id="perfilNome" style="margin: 0; font-weight: bold;"></h2>
+                <h2 id="perfilEmail" style="margin: 0; font-size: 90%; font-style: italic;"></h2>
             </div>
         </div>
     
@@ -78,6 +78,11 @@
     $('#header-container').load('header.html', function () {
       const role = localStorage.getItem('role');
       const nome = localStorage.getItem('nome');
+      const email = localStorage.getItem('email');
+
+        // Atualiza nome e email no perfil da página
+        if (nome) $('#perfilNome').text(nome);
+        if (email) $('#perfilEmail').text(email);
 
       // Controle de exibição baseado no role
       if (role !== 'admin') {
